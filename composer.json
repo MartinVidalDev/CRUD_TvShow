@@ -1,0 +1,17 @@
+{
+    "name": "junior/sae-ms204-dev-application",
+    "type": "project",
+    "license": "Copyleft",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Malcolm Aridory",
+            "email": "malcolm.aridory@etudiant.univ-reims.fr"
+        }
+    ],
+    "require": {}
+}
