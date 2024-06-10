@@ -1,6 +1,9 @@
 <?php
 
 namespace Entity;
+use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
+use PDO;
 
 class TVShow
 {
@@ -72,4 +75,28 @@ class TVShow
     }
 
 
+    /**
+     * Find a show with its ID
+     * @param int $id
+     * @return self|null
+     */
+    public static function findById(int $id): self
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+                SELECT *
+                FROM tvshow
+                WHERE id = :id
+            SQL);
+
+        $stmt->execute(['id' => $id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $artist = $stmt->fetch();
+
+        if (!$artist) {
+            throw new EntityNotFoundException('Artist', $id);
+        }
+
+        return $artist;
+    }
 }
