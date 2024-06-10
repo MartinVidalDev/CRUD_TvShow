@@ -129,7 +129,11 @@ class WebPage
      */
     public function appendJS(string $js): void
     {
-        $this->head .= "\n<script>$js</script>";
+        $this->head .= <<<HTML
+        <script>
+            {$js}
+        </script>
+        HTML;
     }
 
     /**
