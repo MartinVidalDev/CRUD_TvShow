@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Entity;
 
+use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
+use PDO;
+
 class Season
 {
     private int $id;
@@ -52,5 +56,30 @@ class Season
         $this->posterId = $posterId;
     }
 
-
+    /**
+     * Retrieves a season by its ID from the database.
+     *
+     * This static method executes a SQL query to select all columns from the `season` table
+     * for a given season ID. It returns the result as a `Season` object if found, otherwise
+     * it throws an exception.
+     *
+     * @param int $seasonId The ID of the season to retrieve.
+     * @return Season The Season object corresponding to the specified ID.
+     */
+    public static function findById(int $seasonId): Season
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+        SELECT id, tvShow, name, seasonNumber, posterId
+        FROM season
+        WHERE id = {$seasonId}
+        SQL);
+        $request->execute();
+        $request->setFetchMode(PDO::FETCH_CLASS, Season::class);
+        $result = $request->fetch();
+        if (empty($result)) {
+            throw new EntityNotFoundException('Season', $seasonId);
+        }
+        return $result;
+    }
 }
