@@ -28,7 +28,10 @@ class WebPage
 
 
     /**
-     * Webpage constructor.
+     * Constructor for the WebPage class. It assigns the content of the <title> tag to a web page.
+     * If no content is provided when calling the constructor, the default value will be an empty string.
+     *
+     * @param string $title Title of the page. Default is an empty string.
      */
     public function __construct(string $title = "")
     {
