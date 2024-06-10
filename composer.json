@@ -2,7 +2,7 @@
     "name": "junior/sae-ms204-dev-application",
     "type": "project",
     "license": "Copyleft",
-    "autoload-dev": {
+    "autoload": {
         "psr-4": {
             "": "src/"
         }
