@@ -24,9 +24,9 @@ class SeasonCollection
     {
         $request = MyPdo::getInstance()->prepare(
             <<<SQL
-        SELECT id, tvShow, name, seasonNumber, posterId
+        SELECT id, tvShowId, name, seasonNumber, posterId
         FROM season
-        WHERE tvShow = :showId
+        WHERE tvShowId = :showId
         ORDER BY seasonNumber
         SQL
         );
