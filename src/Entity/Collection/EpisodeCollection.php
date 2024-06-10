@@ -18,7 +18,7 @@ class EpisodeCollection
      *
      * @return Episode[] An array of Episode objects.
      */
-    public static function findBySeasonid(int $seasonId): array
+    public static function findBySeasonId(int $seasonId): array
     {
         $request = MyPdo::getInstance()->prepare(
             <<<SQL
