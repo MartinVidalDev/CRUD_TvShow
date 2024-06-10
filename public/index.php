@@ -15,7 +15,15 @@ foreach ($shows as $show) {
     $webPage->appendContent(
         <<<HTML
         
-                        <li><a href=tvshow.php?showId={$show->getId()}>{$webPage->escapeString($show->getName())}</a></li>
+                        <li class="show">
+                            <a href=tvshow.php?showId={$show->getId()}>
+                                <img class="show__poster" src="poster.php?posterId={$show->getPosterId()}" alt="Poster de {$show->getName()}">
+                                <div class="show__info">
+                                    <span class="show__name">{$webPage->escapeString($show->getName())}</span>
+                                    <span class="show__desc">{$webPage->escapeString($show->getOverview())}</span>
+                                </div>
+                            </a>
+                        </li>
         HTML);
 }
 $webPage->appendContent("\n\t\t\t</ul>");
