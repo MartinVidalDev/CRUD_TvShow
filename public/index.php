@@ -18,7 +18,7 @@ foreach ($shows as $show) {
         <li><a href=tvshow.php?showId={$show->getId()}>{$webPage->escapeString($show->getName())}</a></li>
         HTML);
 }
-$webPage->appendContent("</ul>");
+$webPage->appendContent("\n\t\t\t</ul>");
 
 echo $webPage->toHTML();
 
