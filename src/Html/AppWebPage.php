@@ -31,10 +31,11 @@ class AppWebPage extends WebPage
                 <div class="content">
                     {$this->getBody()}
                 </div>
+                <footer class="footer">
+                    Dernière modification : {$this->getLastModification()}
+                </footer>
             </body>
-            <footer class="footer">
-                Dernière modification : {$this->getLastModification()}
-            </footer>
+
         </html>
         HTML;
     }
