@@ -116,7 +116,9 @@ class WebPage
      */
     public function appendCSSUrl(string $url): void
     {
-        $this->head .= "\n<link rel='stylesheet' href='$url'>";
+        $this->head .= <<<HTML
+        <link rel='stylesheet' href='{$url}'>
+        HTML;
     }
 
     /**
