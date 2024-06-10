@@ -14,8 +14,7 @@
         }
     ],
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.58",
-        "ext-pdo": "*"
+        "friendsofphp/php-cs-fixer": "^3.58"
     },
     "config": {
         "process-timeout": 0
@@ -25,5 +24,8 @@
         "start:linux": "bin/run-server.sh",
         "tests:cs": "php vendor/bin/php-cs-fixer fix --dry-run",
         "fix:cs": "php vendor/bin/php-cs-fixer fix"
+    },
+    "require": {
+        "ext-pdo": "*"
     }
 }
