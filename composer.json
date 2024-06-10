@@ -13,5 +13,13 @@
             "email": "malcolm.aridory@etudiant.univ-reims.fr"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.58"
+    },
+    "scripts": {
+        "start:windows": "bin/run-server.bat",
+        "start:linux": "bin/run-server.sh",
+        "tests:cs": "php vendor/bin/php-cs-fixer fix --dry-run",
+        "fix:cs": "php vendor/bin/php-cs-fixer fix"
+    }
 }
