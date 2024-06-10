@@ -26,6 +26,7 @@
         "fix:cs": "php vendor/bin/php-cs-fixer fix"
     },
     "require": {
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-intl": "*"
     }
 }

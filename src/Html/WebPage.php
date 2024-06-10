@@ -3,29 +3,44 @@
 declare(strict_types=1);
 
 namespace Html;
-use Html\StringEscaper;
 
+/**
+ * WebPage Class: This class facilitates the creation of HTML content without manually writing the HTML wrapper.
+ */
 class WebPage
 {
-    private string $head;
+    use StringEscaper;
+    /**
+     * @var string Text that will be between the <head> and </head> tags.
+     */
+    private string $head = "";
+
+    /**
+     * @var string Text that will be between the <title> and </title> tags.
+     */
     private string $title;
-    private string $body;
+
+    /**
+     * @var string Text that will be between the <body> and </body> tags.
+     */
+    private string $body = "";
 
 
     /**
-     * Webpage constructor.
+     * Constructor for the WebPage class. It assigns the content of the <title> tag to a web page.
+     * If no content is provided when calling the constructor, the default value will be an empty string.
+     *
+     * @param string $title Title of the page. Default is an empty string.
      */
     public function __construct(string $title = "")
     {
         $this->title = $title;
-        $this->head = "";
-        $this->body = "";
     }
 
     /**
-     * Head getter
+     * Accessor to get the content of the <head> tag of the current object.
      *
-     * @return string
+     * @return string Content of the <head> tag.
      */
     public function getHead(): string
     {
@@ -33,9 +48,9 @@ class WebPage
     }
 
     /**
-     * Title getter
+     * Accessor to get the content of the <title> tag of the current object.
      *
-     * @return string
+     * @return string Content of the <title> tag.
      */
     public function getTitle(): string
     {
@@ -43,9 +58,9 @@ class WebPage
     }
 
     /**
-     * Body getter
+     * Accessor to get the content of the <body> tag of the current object.
      *
-     * @return string
+     * @return string Content of the <body> tag.
      */
     public function getBody(): string
     {
@@ -53,10 +68,10 @@ class WebPage
     }
 
     /**
-     * Title setter
+     * Mutator to set the content of the $title variable in the <title> tag of the current object.
      *
-     * @param string $title
-     *
+     * @param string $title The title.
+     * @return void
      */
     public function setTitle(string $title): void
     {
@@ -64,10 +79,10 @@ class WebPage
     }
 
     /**
-     * Append content to the head
+     * Method to add content to the <head> tag of the current object.
      *
-     * @param string $content to be appended
-     *
+     * @param string $content The content to add.
+     * @return void
      */
     public function appendToHead(string $content): void
     {
@@ -75,49 +90,69 @@ class WebPage
     }
 
     /**
-     * Append CSS to the head
+     * Method to add CSS to the <head> tag of the current object.
      *
-     * @param string $css to be appended
+     * @param string $css The CSS content to add.
+     * @return void
      */
     public function appendCSS(string $css): void
     {
-        $this->head .= "\n<style>$css</style>";
+        $this->head .= <<<HTML
+        <style>
+            {$css}
+        </style>
+        HTML;
     }
 
     /**
-     * Append a CSS url to the head
+     * Method to add the URL of a CSS script to the <head> tag of the current object
+     * using the <link> tag.
      *
-     * @param string $url to be appended
+     * @param string $url The URL of the CSS script.
+     * @return void
      */
     public function appendCSSUrl(string $url): void
     {
-        $this->head .= "\n<link rel='stylesheet' href='$url'>";
+        $this->head .= <<<HTML
+        <link rel='stylesheet' href='{$url}'>
+        HTML;
     }
 
     /**
-     * Append JS to the head
+     * Method to add JavaScript to the <head> tag of the current object.
      *
-     * @param string $js to be appended
+     * @param string $js The JavaScript content to add.
+     * @return void
      */
     public function appendJS(string $js): void
     {
-        $this->head .= "\n<script>$js</script>";
+        $this->head .= <<<HTML
+        <script>
+            {$js}
+        </script>
+        HTML;
     }
 
     /**
-     * Append a JS url to the head
+     * Method to add the URL of a JavaScript script to the <body> tag of the current object
+     * using the <script> tag.
      *
-     * @param string $url to be appended
+     * @param string $url The URL of the JavaScript script.
+     * @return void
      */
     public function appendJSUrl(string $url): void
     {
-        $this->head .= "\n<script src='$url'></script>";
+        $this->head .= <<<HTML
+        <script src='{$url}'></script>
+
+        HTML;
     }
 
     /**
-     * Append content to the body
+     * Method to add content to the <body> tag of the current object.
      *
-     * @param string $content to be appended
+     * @param string $content The content to add.
+     * @return void
      */
     public function appendContent(string $content): void
     {
@@ -125,27 +160,48 @@ class WebPage
     }
 
     /**
-     * Returns the webpage as a string
+     * Method to generate the HTML code of the complete web page.
      *
-     * @return string
+     * @return string HTML code of the web page.
      */
-    public function toHTML($lang = "en"): string
+    public function toHTML(): string
     {
-
-        return "<!DOCTYPE html>\n" . "<html lang='{$lang}'>\n<head>\n\t<title>" . $this->getTitle() . "</title>\n".
-            $this->getHead() . "</head>\n<body>\n\t" . $this->getBody() . "</body>\n</html>";
+        return <<<HTML
+        <!DOCTYPE html>
+        <html lang="fr">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <title>{$this->getTitle()}</title>
+                {$this->getHead()}
+            </head>
+            <body>
+                {$this->getBody()}
+            </body>
+        </html>
+       HTML;
     }
 
-    use StringEscaper;
-
     /**
-     * Returns the date and time of the last modification using getlastmod
+     * Method to provide the date and time of the last modification
+     * of the main content as a string.
      *
-     * @return string
+     * @return string The date and time of the last modification of the main content.
+     * @throws \Exception
      */
     public function getLastModification(): string
     {
-        return date("F d Y H:i:s.", getlastmod());
+        // Create a DateTime object with the date of the last modification
+        $date = new \DateTime('@' . getlastmod());
+
+        // Create a date formatter in French
+        $formatter = new \IntlDateFormatter('fr_FR', \IntlDateFormatter::FULL, \IntlDateFormatter::FULL);
+        $formatter->setPattern('EEEE d MMMM yyyy H:mm:ss');
+
+        // Format the date
+        $formattedDate = $formatter->format($date);
+
+        return "Dernière modification : " . $formattedDate;
     }
 
     /**
@@ -157,7 +213,4 @@ class WebPage
     {
         $this->head .= "\n<meta name='keywords' content='{$content}'>";
     }
-
-
-
 }
