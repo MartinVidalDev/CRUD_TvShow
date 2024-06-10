@@ -134,18 +134,17 @@ HTML;
             <nav>
                 <div class="nav-bar">
                     <i class='bx bx-menu sidebarOpen'></i>
-                    <span class="logo navLogo"><a href="#">CrudMusic</a></span>
+                    <span class="logo navLogo"><a href="index.php">Série TV</a></span>
             
                     <div class="menu">
                         <div class="logo-toggle">
-                            <span class="logo"><a href="#">CrudMusic</a></span>
+                            <span class="logo"><a href="index.php">Série TV</a></span>
                             <i class='bx bx-x siderbarClose'></i>
                         </div>
             
                         <div class="nav-links">
-                            <div class="nav-links__item"><a href="#">Home</a></div>
-                            <div class="nav-links__item"><a href="#">Chanteurs</a></div>
-                            <div class="nav-links__item"><a href="#">Albums</a></div>
+                            <div class="nav-links__item"><a href="index.php">Home</a></div>
+                            <div class="nav-links__item"><a href="#">Ajouter une série</a></div>
                         </div>
                     </div>
             
@@ -162,7 +161,7 @@ HTML;
                             </div>
             
                             <div class="search-field">
-                                <input id="input-box" type="text" placeholder="Search an artist..." autocomplete="off">
+                                <input id="input-box" type="text" placeholder="Search a TVshow..." autocomplete="off">
                                 <i class='bx bx-search'></i>
                             </div>
                             <div class="result__box">
@@ -178,6 +177,7 @@ HTML;
             {$this->getBody()}
         </main>
         <footer class="footer">{$this->getLastModification()}</footer>
+        <script src="js/nav-animation.js"></script>
     </body>
 </html>
 HTML;
