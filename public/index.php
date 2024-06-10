@@ -12,9 +12,11 @@ $shows = TVShowCollection::findAll();
 
 $webPage->appendContent("<ul class='list'>");
 foreach ($shows as $show) {
-    $webPage->appendContent(<<<HTML
-    <li><a href=tvshow.php?showId={$show->getId()}>{$webPage->escapeString($show->getName(), ENT_QUOTES, 'UTF-8')} </a></li>
-    HTML);
+    $webPage->appendContent(
+        "\n\t\t\t\t" .
+        <<<HTML
+        <li><a href=tvshow.php?showId={$show->getId()}>{$webPage->escapeString($show->getName())}</a></li>
+        HTML);
 }
 $webPage->appendContent("</ul>");
 
