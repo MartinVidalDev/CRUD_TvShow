@@ -5,7 +5,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 90%;
     font-family: "Josefin Sans", sans-serif;
     font-weight: 400;
 }
@@ -67,3 +67,41 @@ li {
     margin-top: 100px;
 }
 
+.show > a {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    text-align: justify;
+    margin-bottom: 50px;
+    max-height: 200px;
+}
+
+.show:nth-child(even) > a {
+    flex-flow: row-reverse nowrap;
+}
+
+.show__poster {
+    border-radius: 10px;
+    max-height: 200px;
+}
+
+.show__poster:hover {
+    transform: scale(1.14);
+}
+
+.show__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.show__name {
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+.show__desc {
+    color: black;
+    font-size: 12pt;
+    overflow: scroll;
+}
