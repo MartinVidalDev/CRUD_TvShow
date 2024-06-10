@@ -73,7 +73,8 @@ class Season
         SELECT id, tvShow, name, seasonNumber, posterId
         FROM season
         WHERE id = {$seasonId}
-        SQL);
+        SQL
+        );
         $request->execute();
         $request->setFetchMode(PDO::FETCH_CLASS, Season::class);
         $result = $request->fetch();
