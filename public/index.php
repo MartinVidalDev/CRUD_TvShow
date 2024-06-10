@@ -24,9 +24,9 @@ foreach ($shows as $show) {
                                 </div>
                             </a>
                         </li>
-        HTML);
+        HTML
+    );
 }
 $webPage->appendContent("\n\t\t\t</ul>");
 
 echo $webPage->toHTML();
-
