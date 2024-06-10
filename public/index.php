@@ -10,20 +10,19 @@ $webPage = new AppWebPage("Séries TV");
 
 $shows = TVShowCollection::findAll();
 
-$webPage->appendContent("<ul class='list'>");
 foreach ($shows as $show) {
     $webPage->appendContent(
         <<<HTML
-        
-                        <li class="show">
-                            <a href=tvshow.php?showId={$show->getId()}>
+                        <div class="show">
+                            <a class="link" href=tvshow.php?showId={$show->getId()}>
                                 <img class="show__poster" src="poster.php?posterId={$show->getPosterId()}" alt="Poster de {$show->getName()}">
                                 <div class="show__info">
-                                    <span class="show__name">{$webPage->escapeString($show->getName())}</span>
+                                    <span class="show__name"><h3>{$webPage->escapeString($show->getName())}</h3></span>
                                     <span class="show__desc">{$webPage->escapeString($show->getOverview())}</span>
                                 </div>
                             </a>
-                        </li>
+                        </div>
+
         HTML
     );
 }
