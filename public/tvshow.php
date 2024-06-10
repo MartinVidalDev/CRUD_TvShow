@@ -29,12 +29,12 @@ foreach ($seasons as $season) {
     $posterId = (int)$webPage->escapeString("{$season->getPosterId()}");
     $name = $webPage->escapeString("{$season->getName()}");
     $seasonList .= <<<HTML
-    <li class='season'>
-        <a href="season.php?seasonId={$season->getId()}">
-            <img class='season__poster' alt='{$name}' src='poster.php?posterId={$posterId}'>
-            <span class='season__name'>{$name}</span>
-        </a>
-    </li>
+        <li class='season'>
+            <a href="season.php?seasonId={$season->getId()}">
+                <img class='season__poster' alt='{$name}' src='poster.php?posterId={$posterId}'>
+                <span class='season__name'>{$name}</span>
+            </a>
+        </li>
     HTML;
 }
 
@@ -48,7 +48,7 @@ $webPage->appendContent(<<<HTML
         </div>
 </div>
     <ul class='list'>
-        {$seasonList}
+    {$seasonList}
     </ul>
 HTML);
 
