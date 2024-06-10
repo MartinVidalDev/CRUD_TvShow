@@ -19,7 +19,7 @@ class AppWebPage extends WebPage
      * @param string $author The author of the web page (default is 'VIDAL&ARIDORY').
      * @param string $header The content for the header section (default is an empty string).
      */
-    public function __construct(string $title, string $logo = '', string $author = 'VIDAL&ARIDORY', string $header = '')
+    public function __construct(string $title, string $logo = 'image/icon-site.png', string $author = 'VIDAL&ARIDORY', string $header = '')
     {
         parent::__construct($title);
         $this->menu = '';
