@@ -145,7 +145,10 @@ class WebPage
      */
     public function appendJSUrl(string $url): void
     {
-        $this->head .= "\n<script src='$url'></script>";
+        $this->head .= <<<HTML
+        <script src='{$url}'></script>
+
+        HTML;
     }
 
     /**
