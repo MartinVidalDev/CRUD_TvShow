@@ -70,12 +70,12 @@ class Season
     {
         $request = MyPdo::getInstance()->prepare(
             <<<SQL
-        SELECT id, tvShow, name, seasonNumber, posterId
+        SELECT id, tvShowId, name, seasonNumber, posterId
         FROM season
-        WHERE id = {$seasonId}
+        WHERE id = :seasonId
         SQL
         );
-        $request->execute();
+        $request->execute(['seasonId' => $seasonId]);
         $request->setFetchMode(PDO::FETCH_CLASS, Season::class);
         $result = $request->fetch();
         if (empty($result)) {
