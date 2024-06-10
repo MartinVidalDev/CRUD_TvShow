@@ -41,9 +41,9 @@ class WebPage
     }
 
     /**
-     * Head getter
+     * Accessor to get the content of the <head> tag of the current object.
      *
-     * @return string
+     * @return string Content of the <head> tag.
      */
     public function getHead(): string
     {
@@ -51,9 +51,9 @@ class WebPage
     }
 
     /**
-     * Title getter
+     * Accessor to get the content of the <title> tag of the current object.
      *
-     * @return string
+     * @return string Content of the <title> tag.
      */
     public function getTitle(): string
     {
@@ -61,9 +61,9 @@ class WebPage
     }
 
     /**
-     * Body getter
+     * Accessor to get the content of the <body> tag of the current object.
      *
-     * @return string
+     * @return string Content of the <body> tag.
      */
     public function getBody(): string
     {
@@ -71,10 +71,10 @@ class WebPage
     }
 
     /**
-     * Title setter
+     * Mutator to set the content of the $title variable in the <title> tag of the current object.
      *
-     * @param string $title
-     *
+     * @param string $title The title.
+     * @return void
      */
     public function setTitle(string $title): void
     {
@@ -82,10 +82,10 @@ class WebPage
     }
 
     /**
-     * Append content to the head
+     * Method to add content to the <head> tag of the current object.
      *
-     * @param string $content to be appended
-     *
+     * @param string $content The content to add.
+     * @return void
      */
     public function appendToHead(string $content): void
     {
@@ -93,9 +93,10 @@ class WebPage
     }
 
     /**
-     * Append CSS to the head
+     * Method to add CSS to the <head> tag of the current object.
      *
-     * @param string $css to be appended
+     * @param string $css The CSS content to add.
+     * @return void
      */
     public function appendCSS(string $css): void
     {
@@ -103,9 +104,11 @@ class WebPage
     }
 
     /**
-     * Append a CSS url to the head
+     * Method to add the URL of a CSS script to the <head> tag of the current object
+     * using the <link> tag.
      *
-     * @param string $url to be appended
+     * @param string $url The URL of the CSS script.
+     * @return void
      */
     public function appendCSSUrl(string $url): void
     {
@@ -113,9 +116,10 @@ class WebPage
     }
 
     /**
-     * Append JS to the head
+     * Method to add JavaScript to the <head> tag of the current object.
      *
-     * @param string $js to be appended
+     * @param string $js The JavaScript content to add.
+     * @return void
      */
     public function appendJS(string $js): void
     {
@@ -123,9 +127,11 @@ class WebPage
     }
 
     /**
-     * Append a JS url to the head
+     * Method to add the URL of a JavaScript script to the <body> tag of the current object
+     * using the <script> tag.
      *
-     * @param string $url to be appended
+     * @param string $url The URL of the JavaScript script.
+     * @return void
      */
     public function appendJSUrl(string $url): void
     {
@@ -133,9 +139,10 @@ class WebPage
     }
 
     /**
-     * Append content to the body
+     * Method to add content to the <body> tag of the current object.
      *
-     * @param string $content to be appended
+     * @param string $content The content to add.
+     * @return void
      */
     public function appendContent(string $content): void
     {
@@ -143,9 +150,9 @@ class WebPage
     }
 
     /**
-     * Returns the webpage as a string
+     * Method to generate the HTML code of the complete web page.
      *
-     * @return string
+     * @return string HTML code of the web page.
      */
     public function toHTML($lang = "en"): string
     {
@@ -154,12 +161,12 @@ class WebPage
             $this->getHead() . "</head>\n<body>\n\t" . $this->getBody() . "</body>\n</html>";
     }
 
-    use StringEscaper;
-
     /**
-     * Returns the date and time of the last modification using getlastmod
+     * Method to provide the date and time of the last modification
+     * of the main content as a string.
      *
-     * @return string
+     * @return string The date and time of the last modification of the main content.
+     * @throws \Exception
      */
     public function getLastModification(): string
     {
@@ -175,7 +182,4 @@ class WebPage
     {
         $this->head .= "\n<meta name='keywords' content='{$content}'>";
     }
-
-
-
 }
