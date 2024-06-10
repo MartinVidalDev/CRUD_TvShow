@@ -194,7 +194,17 @@ class WebPage
      */
     public function getLastModification(): string
     {
-        return date("F d Y H:i:s.", getlastmod());
+        // Create a DateTime object with the date of the last modification
+        $date = new \DateTime('@' . getlastmod());
+
+        // Create a date formatter in French
+        $formatter = new \IntlDateFormatter('fr_FR', \IntlDateFormatter::FULL, \IntlDateFormatter::FULL);
+        $formatter->setPattern('EEEE d MMMM yyyy H:mm:ss');
+
+        // Format the date
+        $formattedDate = $formatter->format($date);
+
+        return "Dernière modification : " . $formattedDate;
     }
 
     /**
