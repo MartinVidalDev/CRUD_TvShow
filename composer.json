@@ -2,7 +2,7 @@
     "name": "junior/sae-ms204-dev-application",
     "type": "project",
     "license": "Copyleft",
-    "autoload": {
+    "autoload-dev": {
         "psr-4": {
             "": "src/"
         }
@@ -14,7 +14,11 @@
         }
     ],
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.58"
+        "friendsofphp/php-cs-fixer": "^3.58",
+        "ext-pdo": "*"
+    },
+    "config": {
+        "process-timeout": 0
     },
     "scripts": {
         "start:windows": "bin/run-server.bat",
