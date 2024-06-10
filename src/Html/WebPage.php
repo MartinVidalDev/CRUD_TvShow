@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace Html;
-use Html\StringEscaper;
 
 /**
  * WebPage Class: This class facilitates the creation of HTML content without manually writing the HTML wrapper.
@@ -36,8 +35,6 @@ class WebPage
     public function __construct(string $title = "")
     {
         $this->title = $title;
-        $this->head = "";
-        $this->body = "";
     }
 
     /**
