@@ -100,7 +100,11 @@ class WebPage
      */
     public function appendCSS(string $css): void
     {
-        $this->head .= "\n<style>$css</style>";
+        $this->head .= <<<HTML
+        <style>
+            {$css}
+        </style>
+        HTML;
     }
 
     /**
