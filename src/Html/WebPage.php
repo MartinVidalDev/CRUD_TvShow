@@ -167,11 +167,22 @@ class WebPage
      *
      * @return string HTML code of the web page.
      */
-    public function toHTML($lang = "en"): string
+    public function toHTML(): string
     {
-
-        return "<!DOCTYPE html>\n" . "<html lang='{$lang}'>\n<head>\n\t<title>" . $this->getTitle() . "</title>\n".
-            $this->getHead() . "</head>\n<body>\n\t" . $this->getBody() . "</body>\n</html>";
+        return <<<HTML
+        <!DOCTYPE html>
+        <html lang="fr">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <title>{$this->getTitle()}</title>
+                {$this->getHead()}
+            </head>
+            <body>
+                {$this->getBody()}
+            </body>
+        </html>
+       HTML;
     }
 
     /**
