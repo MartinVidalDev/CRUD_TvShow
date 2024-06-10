@@ -21,5 +21,26 @@ class Poster
         return $this->id;
     }
 
+    public static function findById(int $id): self
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+            SELECT id, jpeg
+            FROM poster
+            WHERE id = :id
+            SQL
+        );
+        $stmt->execute(['id' => $id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $poster = $stmt->fetch();
+
+        if (!$poster) {
+            throw new EntityNotFoundException('Poster', $id);
+        }
+
+        return $poster;
+
+    }
+
 
 }
