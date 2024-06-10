@@ -5,11 +5,26 @@ declare(strict_types=1);
 namespace Html;
 use Html\StringEscaper;
 
+/**
+ * WebPage Class: This class facilitates the creation of HTML content without manually writing the HTML wrapper.
+ */
 class WebPage
 {
-    private string $head;
+    use StringEscaper;
+    /**
+     * @var string Text that will be between the <head> and </head> tags.
+     */
+    private string $head = "";
+
+    /**
+     * @var string Text that will be between the <title> and </title> tags.
+     */
     private string $title;
-    private string $body;
+
+    /**
+     * @var string Text that will be between the <body> and </body> tags.
+     */
+    private string $body = "";
 
 
     /**
