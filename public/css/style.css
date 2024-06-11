@@ -444,3 +444,10 @@ h3 {
     justify-content: center;
     padding: 5px;
 }
+
+@media(min-width: 800px) {
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
