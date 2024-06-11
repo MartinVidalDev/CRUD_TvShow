@@ -197,12 +197,12 @@ SQL
      * @param string $originalName Original name of the new TVShow
      * @param string $homepage Homepage of the new TVShow
      * @param string $overview Overview of the new TVShow
-     * @param int $posterId Poster ID of the new TVShow
+     * @param int|null $posterId Poster ID of the new TVShow
      * @param ?int $id Identifier of the new TVShow
      *
      * @return TVShow Returns the current object
      */
-    public static function create(string $name, string $originalName, string $homepage, string $overview, int $posterId, ?int $id = null): TVShow
+    public static function create(string $name, string $originalName, string $homepage, string $overview, ?int $posterId, ?int $id = null): TVShow
     {
         $tvShow = new TVShow();
         $tvShow->setName($name);
