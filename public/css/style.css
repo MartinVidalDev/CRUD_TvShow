@@ -510,6 +510,10 @@ a.link.season__show__name:hover {
     color: lightseagreen;
 }
 
+a.link {
+    flex-grow: 1;
+}
+
 @media(min-width: 600px) {
     .show__desc {
         font-size: larger;
