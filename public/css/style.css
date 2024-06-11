@@ -393,7 +393,7 @@ html, body {
     overflow-y: auto;
 }
 
-.show {
+.show, .tvshow {
     padding: 5px;
     display: flex;
     margin: 10px 0;
@@ -407,27 +407,27 @@ html, body {
     padding-right: 10px;
 }
 
-.link {
+.link, .tvshow {
     display: flex;
     flex-direction: row;
     text-decoration: none;
     color: var(--text-color);
 }
 
-.show__info {
+.show__info, .tvshow__info {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     padding-left: 10px;
 }
 
-.show__desc {
+.show__desc, .tvshow__overview {
     overflow-y: auto;
     text-overflow: ellipsis;
     max-height: 115px;
 }
 
-.show__poster {
+.show__poster, .tvshow__poster {
     max-height: 200px;
 }
 
@@ -465,4 +465,14 @@ h3 {
     body {
         max-width: 1000px;
     }
+}
+
+.tvshow__title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tvshow__overview {
+    max-height: 150px;
 }
