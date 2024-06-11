@@ -35,6 +35,15 @@ git clone https:iut-info.univ-reims.fr/gitlab/arid0002/sae-ms204-dev-application
 Ensuite, vous devrez [télécharger le script de création de la base de données](https://iut-info.univ-reims.fr/users/cutrona/restricted/utils/correction/dl.php?f=%2Fbut%2Fs2%2Fsae2-01%2Fressources%2Fjonque01_tvshow.sql)
 et l'importer sur votre serveur MySQL sur XAMPP ou sur votre compte au département informatique.
 
+Enfin, vous devrez ajouter à la racine de votre projet le fichier .mypdo.ini avec vos identifiants vers votre base de données :
+
+```
+[mypdo]
+dsn = "mysql:host=127.0.0.1;dbname=VOTRE_BD;charset=utf8"
+username = "VOTRE IDENTIFIANT"
+password = "VOTRE MOT DE PASSE"
+```
+
 ![Base de données importée dans mon serveur MySQL sur phpMyAdmin](captures/php-my-admin.png)
 
 ### Serveur local
@@ -53,6 +62,7 @@ projet en utilisant ```composer start:linux```, ```composer start:mac``` ou tout
 utilisez ```composer start:windows``` pour lancer le serveur.
 
 ![composer start](captures/composer-start.png)
+
 
 ### Style de codage
 
@@ -83,3 +93,4 @@ On peut également activer cs-fixer au sein même de PhpStorm : celui-ci nous af
 en cas de mauvaise syntaxe.
 
 ![php-cs-fixer dans PhpStorm](captures/cs-fixer-in-phpstorm.png)
+
