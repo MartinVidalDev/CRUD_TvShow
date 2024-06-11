@@ -22,7 +22,7 @@ try {
     exit;
 }
 
-$webPage = new AppWebpage("{$show->getName()} - {$season->getName()}");
+$webPage = new AppWebpage("{$show->getName()}");
 
 $episodes = EpisodeCollection::findBySeasonId($season->getId());
 
@@ -30,23 +30,26 @@ $episodeList = '';
 foreach ($episodes as $episode) {
     $name = $webPage->escapeString("{$episode->getName()}");
     $episodeList .= <<<HTML
-        <li class='episode'>
+        <div class='episode'>
             <span class='episode__name'>{$name}</span>
-        </li>
+            <span class="episode__description">{$episode->getOverview()}</span>
+        </div>
     HTML;
 }
 
 $webPage->appendContent(<<<HTML
 <div class='season'>
-    <a href="tvshow.php?showId={$show->getId()}">
         <img class='season__poster' alt='{$season->getName()}' src='poster.php?posterId={$season->getPosterId()}'>
-        <span class="show__name">{$show->getName()}</span>
-        <span class="season__name">{$season->getName()}</span>
-    </a>
+        <div class='season__info'>
+        <a class="link season__show__name" href="tvshow.php?showId={$show->getId()}">
+            <h2>{$show->getName()}</h2>
+        </a>
+        <span class="season__season__name"><h3>{$season->getName()}</h3></span>
+        </div>
 </div>
-<ul class='list'>
+<div class='list'>
     {$episodeList}
-</ul>
+</div>
 HTML);
 
 echo $webPage->toHTML();
