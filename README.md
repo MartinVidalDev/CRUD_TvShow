@@ -14,6 +14,8 @@
 * [Mise en place du projet](#mise-en-place-du-projet)
   * [Installation et Configuration](#installation-et-configuration)
   * [Serveur local](#serveur-local)
+  * [Style de codage](#style-de-codage)
+* [Structure du projet](#structure-du-projet)
 <!-- TOC -->
 
 ## Introduction
@@ -94,3 +96,4 @@ en cas de mauvaise syntaxe.
 
 ![php-cs-fixer dans PhpStorm](captures/cs-fixer-in-phpstorm.png)
 
+## Structure du projet
