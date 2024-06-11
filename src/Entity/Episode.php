@@ -137,5 +137,29 @@ SQL
         return $this;
     }
 
+    /**
+     * Allows inserting a new Episode into the "Episode" table.
+     * The new id is auto-incremented.
+     *
+     * @return Episode Returns the current instance
+     */
+    protected function insert(): Episode
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    INSERT INTO episode (seasonId, name, overview, episodeNumber) 
+    VALUES (:seasonId, :name, :overview, :episodeNumber)
+SQL
+        );
+        $request->execute([
+            'seasonId' => $this->seasonId,
+            'name' => $this->name,
+            'overview' => $this->overview,
+            'episodeNumber' => $this->episodeNumber
+        ]);
+        $this->setId((int) MyPdo::getInstance()->lastInsertId());
+        return $this;
+    }
+
 
 }
