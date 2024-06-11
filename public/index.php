@@ -5,11 +5,33 @@ use Html\AppWebPage;
 use Entity\Collection\TVShowCollection;
 use Html\StringEscaper;
 use Entity\TVShow;
+use Entity\Genre;
 
 $webPage = new AppWebPage("Séries TV");
 $webPage->setNavLinks(["Home" => "/index.php", "Ajouter une série" => "/admin/TVShow/tvshow-form.php"]);
 
 $shows = TVShowCollection::findAll();
+$genres = Genre::findAll();
+
+// Genres
+
+$webPage->appendContent(<<<HTML
+<form method="get" action="genre.php">
+    <select name="genreId" onchange="this.form.submit()">
+HTML);
+
+foreach ($genres as $genre) {
+    $webPage->appendContent(<<<HTML
+        <option value="{$genre->getId()}">{$genre->getName()}</option>
+HTML);
+}
+
+$webPage->appendContent(<<<HTML
+    </select>
+</form>
+HTML);
+
+// Shows
 
 foreach ($shows as $show) {
     $webPage->appendContent(
