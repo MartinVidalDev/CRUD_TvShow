@@ -11,9 +11,9 @@
   * [Auteurs](#auteurs)
   * [Sommaire](#sommaire)
   * [Introduction](#introduction)
-  * [Mise en place du projet](#mise-en-place-du-projet)
-    * [Installation et Configuration](#installation-et-configuration)
-    * [Serveur local](#serveur-local)
+* [Mise en place du projet](#mise-en-place-du-projet)
+  * [Installation et Configuration](#installation-et-configuration)
+  * [Serveur local](#serveur-local)
 <!-- TOC -->
 
 ## Introduction
@@ -53,3 +53,33 @@ projet en utilisant ```composer start:linux```, ```composer start:mac``` ou tout
 utilisez ```composer start:windows``` pour lancer le serveur.
 
 ![composer start](captures/composer-start.png)
+
+### Style de codage
+
+php-cs-fixer nous permet d'automatiquement repérer et corriger les erreurs de syntaxe.
+
+Il est déjà installé, mais si besoin, on l'installe grâce à la commande suivante :
+```bash
+composer require friendsofphp/php-cs-fixer --dev
+```
+ou
+```bash
+composer fix:cs
+```
+
+Et on peut la tester en faisant une *dry run* à l'aide de la commande suivante.
+L'option ```--diff``` affiche les différences entre l'original et ce qui est ou serait corrigé.
+
+```bash
+php vendor/bin/php-cs-fixer fix --dry-run
+```
+ou
+```bash
+composer test:cs
+```
+![php-cs-fixer](captures/cs-fixer.png)
+
+On peut également activer cs-fixer au sein même de PhpStorm : celui-ci nous affichera des avertissements (_weak warnings_)
+en cas de mauvaise syntaxe.
+
+![php-cs-fixer dans PhpStorm](captures/cs-fixer-in-phpstorm.png)
