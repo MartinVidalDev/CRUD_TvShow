@@ -1,24 +1,26 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Html\Form;
+
 use Entity\Exception\ParameterException;
 use Html\StringEscaper;
 use Entity\TVShow;
 
 class TVShowForm
 {
+    use StringEscaper;
     private ?TVShow $tvshow;
 
-    use StringEscaper;
-
-    public function construct(?TVShow $tvshow=null)
+    public function __construct(?TVShow $tvshow = null)
     {
         $this->tvshow = $tvshow;
     }
 
-    public function getTVShow() {
-        return clone($this->tvshow);
+    public function getTVShow()
+    {
+        return $this?->tvshow;
     }
 
     /**
@@ -29,6 +31,7 @@ class TVShowForm
      */
     public function getHtmlForm(string $action): string
     {
+
         $tvShow = $this->getTVShow();
         $tvShowName = $this->escapeString($tvShow?->getName());
         $tvShowOriginalName = $this->escapeString($tvShow?->getOriginalName());
@@ -51,9 +54,6 @@ class TVShowForm
         </label>
         <label>Overview
             <input type="text" name="overview" value="{$tvShowOverview}" required />
-        </label>
-        <label>Poster ID
-            <input type="text" name="posterId" value="{$tvShowPosterId}"/>
         </label>
         <button type="submit" value="submit">Save</button>
     </form>
@@ -92,9 +92,8 @@ HTML;
         $tvShowOriginalName = $this->stripTagsAndTrim($_POST['originalName']);
         $tvShowHomepage = $this->stripTagsAndTrim($_POST['homepage']);
         $tvShowOverview = $this->stripTagsAndTrim($_POST['overview']);
-        $tvShowPosterId = isset($_POST['posterId']) ? (int)$_POST['posterId'] : null;
 
-        $this->tvshow = TVShow::create($tvShowName, $tvShowOriginalName, $tvShowHomepage, $tvShowOverview, $tvShowPosterId, $tvShowId);
+        $this->tvshow = TVShow::create($tvShowName, $tvShowOriginalName, $tvShowHomepage, $tvShowOverview, null, $tvShowId);
     }
 
 }

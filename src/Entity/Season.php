@@ -180,12 +180,12 @@ SQL
      * @param int $tvShowId TV Show ID of the new Season
      * @param string $name Name of the new Season
      * @param int $seasonNumber Season number of the new Season
-     * @param int $posterId Poster ID of the new Season
+     * @param int|null $posterId Poster ID of the new Season
      * @param ?int $id Identifier of the new Season
      *
      * @return Season Returns the current object
      */
-    public static function create(int $tvShowId, string $name, int $seasonNumber, int $posterId, ?int $id = null): Season
+    public static function create(int $tvShowId, string $name, int $seasonNumber, ?int $posterId, ?int $id = null): Season
     {
         $season = new Season();
         $season->setTvShowId($tvShowId);

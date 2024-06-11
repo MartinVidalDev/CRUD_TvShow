@@ -11,7 +11,7 @@ class SeasonForm
     use StringEscaper;
     private ?Season $season;
 
-    public function construct(?Season $season = null)
+    public function __construct(?Season $season = null)
     {
         $this->season = $season;
     }
@@ -45,9 +45,6 @@ class SeasonForm
         <label>Season Number
             <input type="number" name="seasonNumber" value="{$seasonNumber}" required />
         </label>
-        <label>Poster ID
-            <input type="number" name="posterId" value="{$seasonPosterId}"/>
-        </label>
         <button type="submit" value="submit">Save</button>
     </form>
 HTML;
@@ -80,8 +77,7 @@ HTML;
         $seasonTvShowId = (int)$_POST['tvShowId'];
         $seasonName = $this->stripTagsAndTrim($_POST['name']);
         $seasonNumber = (int)$_POST['seasonNumber'];
-        $seasonPosterId = isset($_POST['posterId']) ? (int)$_POST['posterId'] : null;
 
-        $this->season = Season::create($seasonTvShowId, $seasonName, $seasonNumber, $seasonPosterId, $seasonId);
+        $this->season = Season::create($seasonTvShowId, $seasonName, $seasonNumber, null, $seasonId);
     }
 }
