@@ -495,7 +495,7 @@ h3 {
 }
 
 .season {
-    margin: 10px 5px;
+    margin: 10px 0;
 }
 
 .season__name {
@@ -535,4 +535,27 @@ h1 {
 
 a.link.season__show__name {
     text-align: right;
+}
+
+.episode__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.episode {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.episode__title {
+    display: flex;
+}
+
+.episode__name {
+    margin: 10px 0;
+}
+
+h4 {
+    margin: 0;
 }
