@@ -407,7 +407,7 @@ html, body {
     padding-right: 10px;
 }
 
-.link, .tvshow, .link__season {
+.link, .tvshow, .link__season, .season {
     display: flex;
     flex-direction: row;
     text-decoration: none;
@@ -495,8 +495,6 @@ h3 {
 }
 
 .season {
-    display: flex;
-    flex-direction: row;
     margin: 10px 5px;
 }
 
@@ -522,4 +520,19 @@ h3 {
 
 .tvshow {
     max-height: 250px;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.season__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+a.link.season__show__name {
+    text-align: right;
 }
