@@ -220,8 +220,8 @@ SQL
             <<<'SQL'
                 SELECT tvshow.*
                 FROM tvshow
-                INNER JOIN tvshow_genre ON tvshow.id = tvshow_genre.tvshow_id
-                INNER JOIN genre ON genre.id = tvshow_genre.genre_id
+                INNER JOIN tvshow_genre ON tvshow.id = tvshow_genre.tvshowid
+                INNER JOIN genre ON genre.id = tvshow_genre.genreid
                 WHERE genre.name = :genre
             SQL);
 
