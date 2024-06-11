@@ -53,9 +53,6 @@ class TVShowForm
         <label>Overview
             <input type="text" name="overview" value="{$tvShowOverview}" required />
         </label>
-        <label>Poster ID
-            <input type="text" name="posterId" value="{$tvShowPosterId}"/>
-        </label>
         <button type="submit" value="submit">Save</button>
     </form>
 HTML;
@@ -93,9 +90,8 @@ HTML;
         $tvShowOriginalName = $this->stripTagsAndTrim($_POST['originalName']);
         $tvShowHomepage = $this->stripTagsAndTrim($_POST['homepage']);
         $tvShowOverview = $this->stripTagsAndTrim($_POST['overview']);
-        $tvShowPosterId = isset($_POST['posterId']) ? (int)$_POST['posterId'] : null;
 
-        $this->tvshow = TVShow::create($tvShowName, $tvShowOriginalName, $tvShowHomepage, $tvShowOverview, $tvShowPosterId, $tvShowId);
+        $this->tvshow = TVShow::create($tvShowName, $tvShowOriginalName, $tvShowHomepage, $tvShowOverview, null, $tvShowId);
     }
 
 }
