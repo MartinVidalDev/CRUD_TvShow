@@ -7,7 +7,7 @@ use PDO;
 
 class TVShow
 {
-    private int $id;
+    private ?int $id;
     private string $name;
     private string $originalName;
     private string $homepage;
@@ -23,7 +23,7 @@ class TVShow
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
