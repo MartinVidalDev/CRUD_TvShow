@@ -45,19 +45,19 @@ class TVShowForm
         <input type="hidden" name="id" value="{$tvShow?->getId()}" />
         <div class="form__group">
             <label for="name">Nom de la série</label>
-            <input id="name" type="text" name="name" value="{$tvShowName}" required />
+            <input id="name" type="text" name="name" value="{$tvShowName}" required autocomplete="off" />
         </div>
         <div class="form__group">
             <label for="originalName">Nom d'origine de la série</label>
-            <input id="originalName" type="text" name="originalName" value="{$tvShowOriginalName}" required />
+            <input id="originalName" type="text" name="originalName" value="{$tvShowOriginalName}" required autocomplete="off" />
         </div>
         <div class="form__group">
             <label for="homepage">Page d'accueil de la série</label>
-            <input id="homepage" type="text" name="homepage" value="{$tvShowHomepage}" required />
+            <input id="homepage" type="text" name="homepage" value="{$tvShowHomepage}" required autocomplete="off" />
         </div>
         <div class="form__group">
             <label for="overview">Description</label>
-            <input id="overview" type="text" name="overview" value="{$tvShowOverview}" required />
+            <input id="overview" type="text" name="overview" value="{$tvShowOverview}" required autocomplete="off" />
         </div>
         <button type="submit" value="submit">Save</button>
     </form>
