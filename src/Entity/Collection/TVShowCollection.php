@@ -36,10 +36,11 @@ class TVShowCollection
                 INNER JOIN tvshow_genre ON tvshow.id = tvshow_genre.tvshowid
                 INNER JOIN genre ON genre.id = tvshow_genre.genreid
                 WHERE genre.id = :genre
+                ORDER BY tvshow.name;
             SQL);
 
         $stmt->execute(['genre' => $genreId]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, TVShow::class);
         $tvShows = $stmt->fetchAll();
 
         if (!$tvShows) {
