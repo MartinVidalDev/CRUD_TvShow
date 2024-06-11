@@ -43,7 +43,7 @@ $webPage->appendContent(<<<HTML
         <img class='tvshow__poster' alt='{$show->getName()}' src='poster.php?posterId={$show->getPosterId()}' >
         <div class='tvshow__info'>
             <span class='tvshow__name tvshow__title'><h2>{$show->getName()}</h2></span>
-            <span class='tvshow__originalName tvshow__title'>{$show->getOriginalName()}</span>
+            <span class='tvshow__originalName tvshow__title'><h4>{$show->getOriginalName()}</h4></span>
             <span class='tvshow__overview'>{$show->getOverview()}</span>
         </div>
 </div>
