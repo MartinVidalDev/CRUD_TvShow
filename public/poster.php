@@ -19,7 +19,7 @@ try {
 } catch (ParameterException) {
     http_response_code(400);
 } catch (EntityNotFoundException) {
-    http_response_code(404);
+    file_get_contents('/image/default-poster.png');
 } catch (Exception) {
     http_response_code(500);
 }
