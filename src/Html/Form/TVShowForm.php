@@ -104,7 +104,7 @@ HTML;
         $tvShowOriginalName = $this->stripTagsAndTrim($_POST['originalName']);
         $tvShowHomepage = $this->stripTagsAndTrim($_POST['homepage']);
         $tvShowOverview = $this->stripTagsAndTrim($_POST['overview']);
-        $tvShowPosterId = (int)$_POST['posterId'];
+        $tvShowPosterId = isset($_POST['posterId']) ? (int)$_POST['posterId'] : null;
 
         $this->tvshow = TVShow::create($tvShowName, $tvShowOriginalName, $tvShowHomepage, $tvShowOverview, $tvShowPosterId, $tvShowId);
     }
