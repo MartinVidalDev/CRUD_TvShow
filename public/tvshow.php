@@ -39,7 +39,7 @@ foreach ($seasons as $season) {
 }
 
 $webPage->appendContent(<<<HTML
-<div class='tvshow' xmlns="http://www.w3.org/1999/html">
+<div class='tvshow'">
         <img class='tvshow__poster' alt='{$show->getName()}' src='poster.php?posterId={$show->getPosterId()}' >
         <div class='tvshow__info'>
             <span class='tvshow__name tvshow__title'><h2>{$show->getName()}</h2></span>
