@@ -31,7 +31,9 @@ foreach ($episodes as $episode) {
     $name = $webPage->escapeString("{$episode->getName()}");
     $episodeList .= <<<HTML
         <div class='episode'>
-            <span class='episode__name'>{$name}</span>
+            <div class="episode__name">
+                <h4>{$episode->getEpisodeNumber()} - {$name}</h4>
+            </div>
             <span class="episode__description">{$episode->getOverview()}</span>
         </div>
     HTML;
@@ -47,7 +49,7 @@ $webPage->appendContent(<<<HTML
         <span class="season__season__name"><h3>{$season->getName()}</h3></span>
         </div>
 </div>
-<div class='list'>
+<div class='episode__list'>
     {$episodeList}
 </div>
 HTML);
