@@ -7,19 +7,19 @@ use Entity\Exception\EntityNotFoundException;
 use Entity\Exception\ParameterException;
 
 try {
+    $poster = file_get_contents('image/default-poster.png');
     if (!isset($_GET['posterId']) || !ctype_digit($_GET['posterId'])) {
         throw new ParameterException();
     }
 
-    $poster = Poster::findById((int)$_GET['posterId']);
+    $posterEntity = Poster::findById((int)$_GET['posterId']);
 
     header('Content-Type: image/jpeg');
-    echo $poster->getJpeg();
+    echo $posterEntity->getJpeg();
 
-} catch (ParameterException) {
-    http_response_code(400);
-} catch (EntityNotFoundException) {
-    file_get_contents('/image/default-poster.png');
-} catch (Exception) {
+} catch (ParameterException | EntityNotFoundException $e) {
+    header('Content-Type: image/png');
+    echo $poster;
+} catch (Exception $e) {
     http_response_code(500);
 }
