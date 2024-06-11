@@ -444,3 +444,25 @@ h3 {
     justify-content: center;
     padding: 5px;
 }
+
+@media(min-width: 600px) {
+    .show__desc {
+        font-size: larger;
+    }
+    .show__name {
+        font-size: larger;
+    }
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .show__desc {
+        max-width: 500px;
+    }
+}
+
+@media(min-width: 1000px) {
+    body {
+        max-width: 1000px;
+    }
+}

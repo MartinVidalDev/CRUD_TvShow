@@ -26,6 +26,5 @@ foreach ($shows as $show) {
         HTML
     );
 }
-$webPage->appendContent("\n\t\t\t</ul>");
 
 echo $webPage->toHTML();
