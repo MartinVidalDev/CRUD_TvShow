@@ -20,8 +20,10 @@
         "process-timeout": 0
     },
     "scripts": {
+        "start": "bin/run-server.sh",
         "start:windows": "bin/run-server.bat",
-        "start:linux": "bin/run-server.sh",
+        "start:mac": "@start",
+        "start:linux": "@start",
         "tests:cs": "php vendor/bin/php-cs-fixer fix --dry-run",
         "fix:cs": "php vendor/bin/php-cs-fixer fix"
     },
