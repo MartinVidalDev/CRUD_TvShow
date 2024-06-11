@@ -12,13 +12,13 @@ class TVShowForm
 
     use StringEscaper;
 
-    public function construct(?TVShow $tvshow=null)
+    public function __construct(?TVShow $tvshow=null)
     {
         $this->tvshow = $tvshow;
     }
 
     public function getTVShow() {
-        return clone($this->tvshow);
+        return $this?->tvshow;
     }
 
     /**
@@ -29,6 +29,7 @@ class TVShowForm
      */
     public function getHtmlForm(string $action): string
     {
+
         $tvShow = $this->getTVShow();
         $tvShowName = $this->escapeString($tvShow?->getName());
         $tvShowOriginalName = $this->escapeString($tvShow?->getOriginalName());
