@@ -4,12 +4,40 @@ declare(strict_types=1);
 
 namespace Html;
 
+/**
+ * Class AppWebPage
+ *
+ * Represents a web page with additional functionality for handling
+ * menus, logos, authors, headers, and navigation links.
+ */
 class AppWebPage extends WebPage
 {
     private string $menu;
     private string $logo;
     private string $author;
     private string $header;
+    private array $navLinks;
+
+    /**
+     * Retrieves the navigation links.
+     *
+     * @return array The navigation links.
+     */
+    public function getNavLinks(): array
+    {
+        return $this->navLinks;
+    }
+
+    /**
+     * Sets the navigation links.
+     *
+     * @param array $navLinks The navigation links.
+     * @return void
+     */
+    public function setNavLinks(array $navLinks): void
+    {
+        $this->navLinks = $navLinks;
+    }
 
     /**
      * Constructor for the AppWebPage class.
@@ -121,7 +149,7 @@ HTML;
      */
     public function toHTML(): string
     {
-        return <<<HTML
+        $html = <<<HTML
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -150,8 +178,13 @@ HTML;
                         </div>
             
                         <div class="nav-links">
-                            <div class="nav-links__item"><a href="/index.php">Home</a></div>
-                            <div class="nav-links__item"><a href="#">Ajouter une série</a></div>
+HTML;
+        foreach ($this->navLinks as $name => $path) {
+            $html .= <<<HTML
+                            <div class="nav-links__item"><a href="{$path}">{$name}</a></div>
+HTML;
+        }
+        $html .= <<<HTML
                         </div>
                     </div>
             
@@ -188,5 +221,6 @@ HTML;
     </body>
 </html>
 HTML;
+        return $html;
     }
 }
