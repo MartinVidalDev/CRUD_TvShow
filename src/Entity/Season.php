@@ -15,6 +15,11 @@ class Season
     private string $name;
     private int $seasonNumber;
     private int $posterId;
+
+    public function __construct()
+    {
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -56,6 +61,8 @@ class Season
         $this->posterId = $posterId;
     }
 
+
+
     /**
      * Retrieves a season by its ID from the database.
      *
@@ -83,4 +90,6 @@ class Season
         }
         return $result;
     }
+
+
 }
