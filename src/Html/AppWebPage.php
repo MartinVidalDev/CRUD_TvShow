@@ -15,17 +15,24 @@ class AppWebPage extends WebPage
      * Constructor for the AppWebPage class.
      *
      * @param string $title The title of the web page.
-     * @param string $logo The URL of the logo image (default is an empty string).
+     * @param string $logo The URL of the logo image (default is 'image/icon-site.png').
      * @param string $author The author of the web page (default is 'VIDAL&ARIDORY').
      * @param string $header The content for the header section (default is an empty string).
+     * @param array $navLinks The navigation links (default is an array with 'Home' => '/index.php').
      */
-    public function __construct(string $title, string $logo = 'image/icon-site.png', string $author = 'VIDAL&ARIDORY', string $header = '')
-    {
+    public function __construct(
+        string $title,
+        string $logo = 'image/icon-site.png',
+        string $author = 'VIDAL&ARIDORY',
+        string $header = '',
+        array $navLinks = ['Home' => '/index.php']
+    ) {
         parent::__construct($title);
         $this->menu = '';
         $this->logo = $logo;
         $this->author = $author;
         $this->header = $header;
+        $this->navLinks = $navLinks;
     }
 
     /**
