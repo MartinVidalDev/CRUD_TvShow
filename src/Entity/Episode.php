@@ -161,5 +161,21 @@ SQL
         return $this;
     }
 
+    /**
+     * Allows either inserting a new Episode with the insert() method (id is null)
+     * or updating the Episode if its identifier already exists in the "Episode" table.
+     *
+     * @return Episode Returns the current instance
+     */
+    public function save(): Episode
+    {
+        if ($this->id == null) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
+
 
 }
