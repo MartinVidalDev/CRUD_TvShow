@@ -41,6 +41,7 @@ class TVShowForm
 
 
         $form = <<<HTML
+<div class="form">
     <form method="post" action="{$action}">
         <input type="hidden" name="id" value="{$tvShow?->getId()}" />
         <div class="form__group">
@@ -61,6 +62,7 @@ class TVShowForm
         </div>
         <button type="submit" value="submit">Save</button>
     </form>
+</div>    
 HTML;
         return $form;
     }

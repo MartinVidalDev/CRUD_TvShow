@@ -47,9 +47,9 @@ try {
         </div>
     </form>
 
-    HTML);
-    }
-    else {
+    HTML
+        );
+    } else {
         $webPage->appendContent(
             <<<HTML
 
