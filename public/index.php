@@ -7,6 +7,7 @@ use Html\StringEscaper;
 use Entity\TVShow;
 
 $webPage = new AppWebPage("Séries TV");
+$webPage->setNavLinks(["Home" => "/index.php", "Ajouter une série" => "/admin/TVShow/tvshow-form.php"]);
 
 $shows = TVShowCollection::findAll();
 
