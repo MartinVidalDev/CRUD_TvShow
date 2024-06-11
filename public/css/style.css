@@ -407,7 +407,7 @@ html, body {
     padding-right: 10px;
 }
 
-.link, .tvshow {
+.link, .tvshow, .link__season {
     display: flex;
     flex-direction: row;
     text-decoration: none;
@@ -427,11 +427,11 @@ html, body {
     max-height: 115px;
 }
 
-.show__poster, .tvshow__poster {
+.show__poster, .season__poster {
     max-height: 200px;
 }
 
-.show__desc, .show__name {
+.show__desc, .show__name, .tvshow__overview {
     font-family: "Josefin Sans", sans-serif;
 }
 
@@ -471,8 +471,45 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    text-align: right;
 }
 
 .tvshow__overview {
     max-height: 150px;
+}
+
+.list__season {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.season {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 5px;
+}
+
+.season__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.link__season {
+    flex-grow: 1;
+}
+
+.season__name h3 {
+    text-align: center;
+}
+
+.tvshow__originalName {
+    font-style: italic;
+    margin-right: 10px;
+}
+
+.tvshow {
+    max-height: 250px;
 }
