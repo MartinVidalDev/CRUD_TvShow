@@ -445,10 +445,19 @@ h3 {
     padding: 5px;
 }
 
-@media(min-width: 800px) {
+@media(min-width: 600px) {
+    .show__desc {
+        font-size: larger;
+    }
+    .show__name {
+        font-size: larger;
+    }
     body {
         max-width: 800px;
         margin: 0 auto;
+    }
+    .show__desc {
+        max-width: 500px;
     }
 }
 
