@@ -12,8 +12,8 @@ $genres = Genre::findAll();
 
 // Genres dropdown
 $webPage->appendContent(<<<HTML
-<form method="get" id="genreForm">
-    <select name="genreId" onchange="changeFormAction(this)">
+<form method="get">
+    <select name="genreId" onchange="this.form.submit()">
         <option value="">Tous</option>
 HTML);
 
@@ -29,17 +29,6 @@ HTML);
 $webPage->appendContent(<<<HTML
     </select>
 </form>
-<script>
-function changeFormAction(select) {
-    var form = document.getElementById('genreForm');
-    if (select.value === "") {
-        form.action = "index.php";
-    } else {
-        form.action = "index.php?genreId=" + select.value;
-    }
-    form.submit();
-}
-</script>
 HTML);
 
 if (isset($_GET['genreId']) && is_numeric($_GET['genreId'])) {
