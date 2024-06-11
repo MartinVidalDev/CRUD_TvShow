@@ -40,4 +40,18 @@ class Genre
 
         return $genre;
     }
+
+    public static function findAll(): array
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+                SELECT *
+                FROM genre
+            SQL);
+
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+
+        return $stmt->fetchAll();
+    }
 }
