@@ -51,9 +51,10 @@ class TVShowForm
             <label for="originalName">Nom d'origine de la série</label>
             <input id="originalName" type="text" name="originalName" value="{$tvShowOriginalName}" required />
         </div>
-        <label>Homepage
-            <input type="text" name="homepage" value="{$tvShowHomepage}" required />
-        </label>
+        <div class="form__group">
+            <label for="homepage">Page d'accueil de la série</label>
+            <input id="homepage" type="text" name="homepage" value="{$tvShowHomepage}" required />
+        </div>
         <label>Overview
             <input type="text" name="overview" value="{$tvShowOverview}" required />
         </label>
