@@ -12,16 +12,14 @@ try {
         throw new ParameterException();
     }
 
-    $poster = Poster::findById((int)$_GET['posterId']);
+    $posterEntity = Poster::findById((int)$_GET['posterId']);
 
+    header('Content-Type: image/jpeg');
+    echo $posterEntity->getJpeg();
+
+} catch (ParameterException | EntityNotFoundException $e) {
     header('Content-Type: image/png');
-    echo $poster->getJpeg();
-
-} catch (ParameterException) {
-    http_response_code(400);
-} catch (EntityNotFoundException) {
-    header("Content-Type: image/png");
     echo $poster;
-} catch (Exception) {
+} catch (Exception $e) {
     http_response_code(500);
 }
