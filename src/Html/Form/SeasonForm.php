@@ -1,7 +1,7 @@
 <?php
 
+declare(strict_types=1);
 namespace Html\Form;
-
 use Entity\Exception\ParameterException;
 use Html\StringEscaper;
 use Entity\Season;
