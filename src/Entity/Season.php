@@ -14,7 +14,7 @@ class Season
     private int $tvShowId;
     private string $name;
     private int $seasonNumber;
-    private int $posterId;
+    private ?int $posterId;
 
     public function __construct()
     {
@@ -56,7 +56,7 @@ class Season
     {
         return $this->posterId;
     }
-    public function setPosterId(int $posterId): void
+    public function setPosterId(?int $posterId): void
     {
         $this->posterId = $posterId;
     }
