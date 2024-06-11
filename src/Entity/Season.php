@@ -10,7 +10,7 @@ use PDO;
 
 class Season
 {
-    private int $id;
+    private ?int $id;
     private int $tvShowId;
     private string $name;
     private int $seasonNumber;
