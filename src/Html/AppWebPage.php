@@ -134,16 +134,16 @@ HTML;
             <nav>
                 <div class="nav-bar">
                     <i class='bx bx-menu sidebarOpen'></i>
-                    <span class="logo navLogo"><a href="index.php">Série TV</a></span>
+                    <span class="logo navLogo"><a href="/index.php">Série TV</a></span>
             
                     <div class="menu">
                         <div class="logo-toggle">
-                            <span class="logo"><a href="index.php">Série TV</a></span>
+                            <span class="logo"><a href="/index.php">Série TV</a></span>
                             <i class='bx bx-x siderbarClose'></i>
                         </div>
             
                         <div class="nav-links">
-                            <div class="nav-links__item"><a href="index.php">Home</a></div>
+                            <div class="nav-links__item"><a href="/index.php">Home</a></div>
                             <div class="nav-links__item"><a href="#">Ajouter une série</a></div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ HTML;
             {$this->getBody()}
         </main>
         <footer class="footer">{$this->getLastModification()}</footer>
-        <script src="js/nav-animation.js"></script>
+        <script src="/js/nav-animation.js"></script>
     </body>
 </html>
 HTML;
