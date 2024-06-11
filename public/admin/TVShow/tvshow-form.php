@@ -53,10 +53,12 @@ try {
         $webPage->appendContent(
             <<<HTML
 
-    <form class="cancel-form" action="../../index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
-        <button class="cancel" type="submit">Annuler</button>
-    </form>
-HTML
+        <form class="cancel-form" action="../../index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
+            <div class="form__group">
+                <button class="cancel" type="submit">Annuler</button>
+            </div>
+        </form>
+        HTML
         );
     }
 
