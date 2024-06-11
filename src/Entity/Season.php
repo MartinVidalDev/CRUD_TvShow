@@ -134,5 +134,45 @@ SQL
         return $this;
     }
 
+    /**
+     * Allows inserting a new Season into the "Season" table.
+     * The new id is auto-incremented.
+     *
+     * @return Season Returns the current instance
+     */
+    protected function insert(): Season
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    INSERT INTO season (tvShowId, name, seasonNumber, posterId) 
+    VALUES (:tvShowId, :name, :seasonNumber, :posterId)
+SQL
+        );
+        $request->execute([
+            'tvShowId' => $this->tvShowId,
+            'name' => $this->name,
+            'seasonNumber' => $this->seasonNumber,
+            'posterId' => $this->posterId
+        ]);
+        $this->setId((int) MyPdo::getInstance()->lastInsertId());
+        return $this;
+    }
+
+    /**
+     * Allows either inserting a new Season with the insert() method (id is null)
+     * or updating the Season if its identifier already exists in the "Season" table.
+     *
+     * @return Season Returns the current instance
+     */
+    public function save(): Season
+    {
+        if ($this->id == null) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
+
 
 }
