@@ -30,24 +30,12 @@ class TVShowForm
     public function getHtmlForm(string $action): string
     {
         $tvShow = $this->getTVShow();
-        $tvShowName = $tvShow?->getName();
-        $tvShowOriginalName = $tvShow?->getOriginalName();
-        $tvShowHomepage = $tvShow?->getHomepage();
-        $tvShowOverview = $tvShow?->getOverview();
+        $tvShowName = $this->escapeString($tvShow?->getName());
+        $tvShowOriginalName = $this->escapeString($tvShow?->getOriginalName());
+        $tvShowHomepage = $this->escapeString($tvShow?->getHomepage());
+        $tvShowOverview = $this->escapeString($tvShow?->getOverview());
         $tvShowPosterId = $tvShow?->getPosterId();
 
-        if ($tvShowName) {
-            $tvShowName = $this->escapeString($tvShowName);
-        }
-        if ($tvShowOriginalName) {
-            $tvShowOriginalName = $this->escapeString($tvShowOriginalName);
-        }
-        if ($tvShowHomepage) {
-            $tvShowHomepage = $this->escapeString($tvShowHomepage);
-        }
-        if ($tvShowOverview) {
-            $tvShowOverview = $this->escapeString($tvShowOverview);
-        }
 
         $form = <<<HTML
     <form method="post" action={$action}>
