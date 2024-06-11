@@ -110,5 +110,29 @@ SQL
         return $this;
     }
 
+    /**
+     * Updates the current object (Season) in the "Season" table.
+     *
+     * @return Season Returns the current object
+     */
+    protected function update(): Season
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    UPDATE season
+    SET tvShowId = :tvShowId, name = :name, seasonNumber = :seasonNumber, posterId = :posterId
+    WHERE id = :id
+SQL
+        );
+        $request->execute([
+            'tvShowId' => $this->tvShowId,
+            'name' => $this->name,
+            'seasonNumber' => $this->seasonNumber,
+            'posterId' => $this->posterId,
+            'id' => $this->id
+        ]);
+        return $this;
+    }
+
 
 }
