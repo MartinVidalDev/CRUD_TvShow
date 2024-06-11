@@ -55,9 +55,10 @@ class TVShowForm
             <label for="homepage">Page d'accueil de la série</label>
             <input id="homepage" type="text" name="homepage" value="{$tvShowHomepage}" required />
         </div>
-        <label>Overview
-            <input type="text" name="overview" value="{$tvShowOverview}" required />
-        </label>
+        <div class="form__group">
+            <label for="overview">Description</label>
+            <input id="overview" type="text" name="overview" value="{$tvShowOverview}" required />
+        </div>
         <button type="submit" value="submit">Save</button>
     </form>
 HTML;
