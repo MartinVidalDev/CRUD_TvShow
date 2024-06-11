@@ -1,23 +1,25 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Html\Form;
+
 use Entity\Exception\ParameterException;
 use Html\StringEscaper;
 use Entity\TVShow;
 
 class TVShowForm
 {
+    use StringEscaper;
     private ?TVShow $tvshow;
 
-    use StringEscaper;
-
-    public function __construct(?TVShow $tvshow=null)
+    public function __construct(?TVShow $tvshow = null)
     {
         $this->tvshow = $tvshow;
     }
 
-    public function getTVShow() {
+    public function getTVShow()
+    {
         return $this?->tvshow;
     }
 
