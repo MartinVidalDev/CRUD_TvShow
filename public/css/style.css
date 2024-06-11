@@ -345,25 +345,6 @@ body.dark .search-field i{
     }
 }
 
-ul.list {
-    list-style-type: none;
-}
-
-.list li {
-    margin: 10px;
-}
-
-.list li a:link{
-    color: #010718;
-}
-
-.list li a:link {
-    color: RGB(1, 1, 0);
-}
-
-.list li a:visited {
-    color: RGB(1, 1, 0);
-}
 
 .list li a:focus {
     color: white;
