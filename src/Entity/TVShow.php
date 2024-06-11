@@ -214,5 +214,26 @@ SQL
         return $tvShow;
     }
 
+    public static function findByGenre(string $genre): array
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+                SELECT tvshow.*
+                FROM tvshow
+                INNER JOIN tvshow_genre ON tvshow.id = tvshow_genre.tvshow_id
+                INNER JOIN genre ON genre.id = tvshow_genre.genre_id
+                WHERE genre.name = :genre
+            SQL);
+
+        $stmt->execute(['genre' => $genre]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $tvShows = $stmt->fetchAll();
+
+        if (!$tvShows) {
+            throw new EntityNotFoundException('TV Show', $genre);
+        }
+
+        return $tvShows;
+    }
 
 }
