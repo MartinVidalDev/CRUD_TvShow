@@ -150,6 +150,7 @@ SQL
      *
      * @return TVShow Returns the current instance
      */
+
     protected function insert(): TVShow
     {
         $request = MyPdo::getInstance()->prepare(
@@ -168,5 +169,22 @@ SQL
         $this->setId((int) MyPdo::getInstance()->lastInsertId());
         return $this;
     }
+
+    /**
+     * Allows either inserting a new TVShow with the insert() method (id is null)
+     * or updating the TVShow if its identifier already exists in the "TVShow" table.
+     *
+     * @return TVShow Returns the current instance
+     */
+    public function save(): TVShow
+    {
+        if ($this->id == null) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
+
 
 }
