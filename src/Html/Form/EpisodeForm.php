@@ -53,12 +53,43 @@ class EpisodeForm
         <input type="number" name="episodeNumber" value="{$episodeNumber}" required />
     </label>
     <label>Poster ID
-        <input type="text" name="posterId" value="{$episodeOverview}"/>
+        <input type="text" name="posterId" value="{$episodeOverview}" required />
     </label>
     <button type="submit" value="submit">Save</button>
 </form>
 HTML;
         return $form;
+    }
+
+    /**
+     * Method that controls the data transmitted by the form in order to not corrupt the database.
+     *
+     * @throws ParameterException If any of the required fields in the $_POST array are empty
+     * @return void Does not return anything
+     */
+    public function setEntityFromQueryString(): void
+    {
+        $episodeId = null;
+        if (isset($_POST['id']) && ctype_digit($_POST['id'])) {
+            $episodeId = (int)$_POST['id'];
+        }
+
+        if (empty($_POST['seasonId'])) {
+            throw new ParameterException("Season ID is missing");
+        }
+        if (empty($_POST['name'])) {
+            throw new ParameterException("Episode name is missing");
+        }
+        if (empty($_POST['episodeNumber'])) {
+            throw new ParameterException("Episode number is missing");
+        }
+
+        $episodeSeasonId = (int)$_POST['seasonId'];
+        $episodeName = $this->stripTagsAndTrim($_POST['name']);
+        $episodeNumber = (int)($_POST['episodeNumber']);
+        $episodeOverview = $this->stripTagsAndTrim($_POST['overview']);
+
+        $this->episode = Episode::create($episodeSeasonId, $episodeName, $episodeOverview, $episodeNumber, $episodeId);
     }
 
 
