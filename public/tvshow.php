@@ -29,27 +29,28 @@ foreach ($seasons as $season) {
     $posterId = (int)$webPage->escapeString("{$season->getPosterId()}");
     $name = $webPage->escapeString("{$season->getName()}");
     $seasonList .= <<<HTML
-        <li class='season'>
-            <a href="season.php?seasonId={$season->getId()}">
+        <div class='season'>
+            <a class="link__season" href="season.php?seasonId={$season->getId()}">
                 <img class='season__poster' alt='{$name}' src='poster.php?posterId={$posterId}'>
-                <span class='season__name'>{$name}</span>
+                <span class='season__name'><h3>{$name}</h3></span>
             </a>
-        </li>
+        </div>
     HTML;
 }
 
 $webPage->appendContent(<<<HTML
-<div class='tvshow'>
+<div class='tvshow' xmlns="http://www.w3.org/1999/html">
         <img class='tvshow__poster' alt='{$show->getName()}' src='poster.php?posterId={$show->getPosterId()}' >
         <div class='tvshow__info'>
-            <span class='tvshow__name'>{$show->getName()}</span>
-            <span class='tvshow__originalName'>{$show->getOriginalName()}</span>
+            <span class='tvshow__name tvshow__title'><h2>{$show->getName()}</h2></span>
+            <span class='tvshow__originalName tvshow__title'><h4>{$show->getOriginalName()}</h4></span>
             <span class='tvshow__overview'>{$show->getOverview()}</span>
         </div>
 </div>
-    <ul class='list'>
+    <div class='list__season'>
     {$seasonList}
-    </ul>
-HTML);
+    </div>
+HTML
+);
 
 echo $webPage->toHTML();
