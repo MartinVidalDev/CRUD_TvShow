@@ -42,7 +42,9 @@ try {
 
     <form class="delete-form" action="tvshow-delete.php" method="get" onsubmit="return confirm('Voulez-vous vraiment supprimer cette série ?');">
         <input type="hidden" name="showId" value="{$showId}" />
-        <button class="delete" type="submit">Supprimer</button>
+        <div class="form__group">
+            <button class="delete" type="submit">Supprimer</button>
+        </div>
     </form>
 
     HTML);
