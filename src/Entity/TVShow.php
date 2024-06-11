@@ -144,4 +144,29 @@ SQL
         return $this;
     }
 
+    /**
+     * Allows inserting a new TVShow into the "TVShow" table.
+     * The new id is auto-incremented.
+     *
+     * @return TVShow Returns the current instance
+     */
+    protected function insert(): TVShow
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    INSERT INTO tvshow (name, originalName, homepage, overview, posterId) 
+    VALUES (:name, :originalName, :homepage, :overview, :posterId)
+SQL
+        );
+        $request->execute([
+            'name' => $this->name,
+            'originalName' => $this->originalName,
+            'homepage' => $this->homepage,
+            'overview' => $this->overview,
+            'posterId' => $this->posterId
+        ]);
+        $this->setId((int) MyPdo::getInstance()->lastInsertId());
+        return $this;
+    }
+
 }
