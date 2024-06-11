@@ -456,14 +456,24 @@ h3 {
         max-width: 800px;
         margin: 0 auto;
     }
-    .show__desc {
+    .show__desc, .tvshow__overview {
         max-width: 500px;
+    }
+    .tvshow {
+        border: 2px black solid;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    body.dark .tvshow {
+        background-color: black;
+        border-color: #CCCCCC;
     }
 }
 
 @media(min-width: 1000px) {
     body {
-        max-width: 1000px;
+        max-width: 1200px;
     }
 }
 
