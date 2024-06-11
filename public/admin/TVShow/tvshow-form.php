@@ -27,6 +27,35 @@ try {
     $webPage = new \Html\AppWebPage("Insert");
     $form = new TVShowForm($tvShow);
     $webPage->appendContent($form->getHtmlForm('tvshow-save.php'));
+
+    // Adding a button to either delete the Show or cancel the creation
+    if (isset($_GET['showId'])) {
+        $webPage->appendContent(<<<HTML
+
+    <form class="cancel-form" action="tvshow.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la modification de série ?');">
+        <input type="hidden" name="showId" value="{$showId}" />
+        <button type="submit">Annuler</button>
+    </form>
+
+    <form class="delete-form" action="tvshow-delete.php" method="get" onsubmit="return confirm('Voulez-vous vraiment supprimer cette série ?');">
+        <input type="hidden" name="showId" value="{$showId}" />
+        <button class="delete" type="submit">Supprimer</button>
+    </form>
+
+HTML
+        );
+    }
+    else {
+        $webPage->appendContent(<<<HTML
+
+    <form class="cancel-form" action="../../index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
+        <button class="cancel" type="submit">Annuler</button>
+    </form>
+HTML
+        );
+    }
+
+
     echo $webPage->toHTML();
 
 } catch (ParameterException $e) {
