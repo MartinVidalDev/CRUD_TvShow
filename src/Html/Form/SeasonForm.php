@@ -57,4 +57,34 @@ HTML;
         return $form;
     }
 
+    /**
+     * Method that controls the data transmitted by the form in order to not corrupt the database.
+     *
+     * @throws ParameterException If any of the required fields in the $_POST array are empty
+     * @return void Does not return anything
+     */
+    public function setEntityFromQueryString(): void
+    {
+        $seasonId = null;
+        if (isset($_POST['id']) && ctype_digit($_POST['id'])) {
+            $seasonId = (int)$_POST['id'];
+        }
+
+        if (empty($_POST['tvShowId'])) {
+            throw new ParameterException("TV Show ID is missing");
+        }
+        if (empty($_POST['name'])) {
+            throw new ParameterException("Season name is missing");
+        }
+        if (empty($_POST['seasonNumber'])) {
+            throw new ParameterException("Season number is missing");
+        }
+
+        $seasonTvShowId = (int)$_POST['tvShowId'];
+        $seasonName = $this->stripTagsAndTrim($_POST['name']);
+        $seasonNumber = (int)$_POST['seasonNumber'];
+        $seasonPosterId = isset($_POST['posterId']) ? (int)$_POST['posterId'] : null;
+
+        $this->season = Season::create($seasonTvShowId, $seasonName, $seasonNumber, $seasonPosterId, $seasonId);
+    }
 }
