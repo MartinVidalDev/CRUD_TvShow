@@ -8,7 +8,7 @@ use PDO;
 
 class Poster
 {
-    private int $id;
+    private ?int $id;
     private string $jpeg;
 
     public function getJpeg(): string
@@ -16,9 +16,9 @@ class Poster
         return $this->jpeg;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
-        return $this->id;
+        return $this?->id;
     }
 
     public static function findById(int $id): self

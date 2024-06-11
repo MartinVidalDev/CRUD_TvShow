@@ -52,9 +52,9 @@ class Season
     {
         $this->seasonNumber = $seasonNumber;
     }
-    public function getPosterId(): int
+    public function getPosterId(): ?int
     {
-        return $this->posterId;
+        return $this?->posterId;
     }
     public function setPosterId(?int $posterId): void
     {
