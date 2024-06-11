@@ -65,7 +65,7 @@ class TVShowForm
             <input type="text" name="overview" value="{$tvShowOverview}" required />
         </label>
         <label>Poster ID
-            <input type="text" name="posterId" value="{$tvShowPosterId}" required />
+            <input type="text" name="posterId" value="{$tvShowPosterId}"/>
         </label>
         <button type="submit" value="submit">Save</button>
     </form>
@@ -73,5 +73,40 @@ HTML;
         return $form;
     }
 
+    /**
+     * Method that controls the data transmitted by the form in order to not corrupt the database.
+     *
+     * @throws ParameterException If any of the required fields in the $_POST array are empty
+     * @return void Does not return anything
+     */
+    public function setEntityFromQueryString(): void
+    {
+        $tvShowId = null;
+        if (isset($_POST['id']) && ctype_digit($_POST['id'])) {
+            $tvShowId = (int)$_POST['id'];
+        }
+
+        if (empty($_POST['name'])) {
+            throw new ParameterException("Nom de la série manquant");
+        }
+        if (empty($_POST['originalName'])) {
+            throw new ParameterException("Nom original de la série manquant");
+        }
+        if (empty($_POST['homepage'])) {
+            throw new ParameterException("Page d'accueil de la série manquante");
+        }
+        if (empty($_POST['overview'])) {
+            throw new ParameterException("Aperçu de la série manquant");
+        }
+
+
+        $tvShowName = $this->stripTagsAndTrim($_POST['name']);
+        $tvShowOriginalName = $this->stripTagsAndTrim($_POST['originalName']);
+        $tvShowHomepage = $this->stripTagsAndTrim($_POST['homepage']);
+        $tvShowOverview = $this->stripTagsAndTrim($_POST['overview']);
+        $tvShowPosterId = (int)$_POST['posterId'];
+
+        $this->tvshow = TVShow::create($tvShowName, $tvShowOriginalName, $tvShowHomepage, $tvShowOverview, $tvShowPosterId, $tvShowId);
+    }
 
 }
