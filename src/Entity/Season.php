@@ -24,7 +24,7 @@ class Season
     {
         return $this->id;
     }
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -89,6 +89,25 @@ class Season
             throw new EntityNotFoundException('Season', $seasonId);
         }
         return $result;
+    }
+
+    /**
+     * Deletes the current object from the Database (Season)
+     * and set its identifier to null.
+     *
+     * @return Season Returns the current instance
+     */
+    public function delete(): Season
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    DELETE FROM season
+    WHERE id = :id
+SQL
+        );
+        $request->execute(['id' => $this->id]);
+        $this->setId(null);
+        return $this;
     }
 
 
