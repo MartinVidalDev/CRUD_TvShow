@@ -111,30 +111,13 @@ class TVShow
         $request = MyPdo::getInstance()->prepare(
             <<<SQL
     DELETE FROM tvshow
-    WHERE id = {$this->id}
+    WHERE id = :id
 SQL
         );
-        $request->execute();
+        $request->execute(['id' => $this->id]);
         $this->setId(null);
         return $this;
     }
 
 
-    /**
-     * Updates the name of the current object (TVShow) in the "TVShow" table.
-     *
-     * @return TVShow Returns the current object
-     */
-    protected function update(): TVShow
-    {
-        $request = MyPdo::getInstance()->prepare(
-            <<<SQL
-    UPDATE tvshow
-    SET name = '{$this->name}'
-    WHERE id = {$this->id}
-SQL
-        );
-        $request->execute();
-        return $this;
-    }
 }
