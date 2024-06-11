@@ -99,4 +99,25 @@ class TVShow
 
         return $artist;
     }
+
+    /**
+     * Deletes the current object from the Database (TVShow)
+     * and set its identifier to null.
+     *
+     * @return TVShow Returns the current instance
+     */
+    public function delete(): TVShow
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    DELETE FROM tvshow
+    WHERE id = {$this->id}
+SQL
+        );
+        $request->execute();
+        $this->setId(null);
+        return $this;
+    }
+
+
 }
