@@ -1,16 +1,47 @@
 <?php
 
 declare(strict_types=1);
-use Html\AppWebPage;
 use Entity\Collection\TVShowCollection;
-use Html\StringEscaper;
-use Entity\TVShow;
+use Html\AppWebPage;
+use Entity\Genre;
 
 $webPage = new AppWebPage("Séries TV");
 $webPage->setNavLinks(["Home" => "/index.php", "Ajouter une série" => "/admin/TVShow/tvshow-form.php"]);
 
-$shows = TVShowCollection::findAll();
+$genres = Genre::findAll();
 
+// Genres dropdown
+$webPage->appendContent(<<<HTML
+<form method="get">
+    <select name="genreId" onchange="this.form.submit()">
+        <option value="">Tous</option>
+HTML);
+
+$currentGenreId = $_GET['genreId'] ?? '';
+
+foreach ($genres as $genre) {
+    $selected = $genre->getId() == $currentGenreId ? 'selected' : '';
+    $webPage->appendContent(<<<HTML
+        <option value="{$genre->getId()}" {$selected}>{$genre->getName()}</option>
+HTML);
+}
+
+$webPage->appendContent(<<<HTML
+    </select>
+</form>
+HTML);
+
+if (isset($_GET['genreId']) && is_numeric($_GET['genreId'])) {
+    // Display shows by genre
+    $genreId = (int)$_GET['genreId'];
+    $shows = TVShowCollection::findByGenre($genreId);
+    $webPage->setTitle($genre->getName());
+} else {
+    // Display all shows
+    $shows = TVShowCollection::findAll();
+}
+
+// Shows
 foreach ($shows as $show) {
     $webPage->appendContent(
         <<<HTML

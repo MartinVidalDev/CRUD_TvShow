@@ -213,6 +213,4 @@ SQL
         $tvShow->setId($id);
         return $tvShow;
     }
-
-
 }
