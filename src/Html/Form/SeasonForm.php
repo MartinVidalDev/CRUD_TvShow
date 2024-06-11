@@ -30,13 +30,10 @@ class SeasonForm
     public function getHtmlForm(string $action): string
     {
         $season = $this->getSeason();
-        $seasonName = $season?->getName();
+        $seasonName = $this->escapeString($season?->getName());
         $seasonNumber = $season?->getSeasonNumber();
         $seasonPosterId = $season?->getPosterId();
 
-        if ($seasonName) {
-            $seasonName = $this->escapeString($seasonName);
-        }
 
         $form = <<<HTML
     <form method="post" action={$action}>
