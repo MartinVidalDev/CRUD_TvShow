@@ -177,5 +177,26 @@ SQL
         return $this;
     }
 
+    /**
+     * Creates a new instance of Episode
+     *
+     * @param int $seasonId Season ID of the new Episode
+     * @param string $name Name of the new Episode
+     * @param string $overview Overview of the new Episode
+     * @param int $episodeNumber Episode number of the new Episode
+     * @param ?int $id Identifier of the new Episode
+     *
+     * @return Episode Returns the current object
+     */
+    public static function create(int $seasonId, string $name, string $overview, int $episodeNumber, ?int $id = null): Episode
+    {
+        $episode = new Episode();
+        $episode->setSeasonId($seasonId);
+        $episode->setName($name);
+        $episode->setOverview($overview);
+        $episode->setEpisodeNumber($episodeNumber);
+        $episode->setId($id);
+        return $episode;
+    }
 
 }
