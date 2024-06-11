@@ -345,19 +345,6 @@ body.dark .search-field i{
     }
 }
 
-
-.list li a:focus {
-    color: white;
-}
-
-.list li a:hover {
-    color: white;
-}
-
-.list li a:active {
-    color: black;
-}
-
 html, body {
     display: flex;
     flex-direction: column;
@@ -392,6 +379,7 @@ html, body {
     display: flex;
     flex-direction: row;
     text-decoration: none;
+    justify-content: space-around;
     color: var(--text-color);
 }
 
@@ -424,38 +412,6 @@ h3 {
     display: flex;
     justify-content: center;
     padding: 5px;
-}
-
-@media(min-width: 600px) {
-    .show__desc {
-        font-size: larger;
-    }
-    .show__name {
-        font-size: larger;
-    }
-    body {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    .show__desc, .tvshow__overview {
-        max-width: 500px;
-    }
-    .tvshow {
-        border: 2px black solid;
-        border-radius: 10px;
-        background-color: white;
-    }
-
-    body.dark .tvshow {
-        background-color: black;
-        border-color: #CCCCCC;
-    }
-}
-
-@media(min-width: 1000px) {
-    body {
-        max-width: 1200px;
-    }
 }
 
 .tvshow__title {
@@ -512,6 +468,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    padding-right: 5px;
 }
 
 a.link.season__show__name {
@@ -539,4 +496,48 @@ a.link.season__show__name {
 
 h4 {
     margin: 0;
+}
+
+body.dark .episode {
+    color: white;
+}
+
+body.dark .footer {
+    color: #CCCCCC;
+}
+
+a.link.season__show__name:hover {
+    color: lightseagreen;
+}
+
+@media(min-width: 600px) {
+    .show__desc {
+        font-size: larger;
+    }
+    .show__name {
+        font-size: larger;
+    }
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .show__desc, .tvshow__overview {
+        max-width: 600px;
+    }
+    .tvshow {
+        border: 2px black solid;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    body.dark .tvshow {
+        background-color: black;
+        border-color: #CCCCCC;
+    }
+}
+
+@media(min-width: 1000px) {
+    body {
+        max-width: 1200px;
+    }
 }
