@@ -41,11 +41,12 @@ class TVShowForm
 
 
         $form = <<<HTML
-    <form method="post" action={$action}>
+    <form method="post" action="{$action}">
         <input type="hidden" name="id" value="{$tvShow?->getId()}" />
-        <label>Name
-            <input type="text" name="name" value="{$tvShowName}" required />
-        </label>
+        <div class="form__group">
+            <label for="name">Nom de la série</label>
+            <input id="name" type="text" name="name" value="{$tvShowName}" required />
+        </div>
         <label>Original Name
             <input type="text" name="originalName" value="{$tvShowOriginalName}" required />
         </label>
