@@ -120,4 +120,21 @@ SQL
     }
 
 
+    /**
+     * Updates the name of the current object (TVShow) in the "TVShow" table.
+     *
+     * @return TVShow Returns the current object
+     */
+    protected function update(): TVShow
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    UPDATE tvshow
+    SET name = '{$this->name}'
+    WHERE id = {$this->id}
+SQL
+        );
+        $request->execute();
+        return $this;
+    }
 }
