@@ -94,5 +94,23 @@ class Episode
         return $result;
     }
 
+    /**
+     * Deletes the current object from the Database (Episode)
+     * and set its identifier to null.
+     *
+     * @return Episode Returns the current instance
+     */
+    public function delete(): Episode
+    {
+        $request = MyPdo::getInstance()->prepare(
+            <<<SQL
+    DELETE FROM episode
+    WHERE id = :id
+SQL
+        );
+        $request->execute(['id' => $this->id]);
+        $this->setId(null);
+        return $this;
+    }
 
 }
