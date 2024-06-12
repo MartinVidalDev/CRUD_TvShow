@@ -41,22 +41,28 @@ class TVShowForm
 
 
         $form = <<<HTML
-    <form method="post" action={$action}>
+<div class="form">
+    <form method="post" action="{$action}">
         <input type="hidden" name="id" value="{$tvShow?->getId()}" />
-        <label>Name
-            <input type="text" name="name" value="{$tvShowName}" required />
-        </label>
-        <label>Original Name
-            <input type="text" name="originalName" value="{$tvShowOriginalName}" required />
-        </label>
-        <label>Homepage
-            <input type="text" name="homepage" value="{$tvShowHomepage}" required />
-        </label>
-        <label>Overview
-            <input type="text" name="overview" value="{$tvShowOverview}" required />
-        </label>
+        <div class="form__group">
+            <label for="name">Nom de la série</label>
+            <input id="name" type="text" name="name" value="{$tvShowName}" required autocomplete="off" />
+        </div>
+        <div class="form__group">
+            <label for="originalName">Nom d'origine de la série</label>
+            <input id="originalName" type="text" name="originalName" value="{$tvShowOriginalName}" required autocomplete="off" />
+        </div>
+        <div class="form__group">
+            <label for="homepage">Page d'accueil de la série</label>
+            <input id="homepage" type="text" name="homepage" value="{$tvShowHomepage}" required autocomplete="off" />
+        </div>
+        <div class="form__group">
+            <label for="overview">Description</label>
+            <input id="overview" type="text" name="overview" value="{$tvShowOverview}" required autocomplete="off" />
+        </div>
         <button type="submit" value="submit">Save</button>
     </form>
+</div>    
 HTML;
         return $form;
     }

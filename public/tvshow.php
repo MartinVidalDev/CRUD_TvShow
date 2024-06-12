@@ -21,6 +21,7 @@ try {
 }
 
 $webPage = new AppWebpage("{$show->getName()}");
+$webPage->setNavLinks(["Home" => "/index.php", "Modifier la série" => "/admin/TVShow/tvshow-form.php?showId={$showId}"]);
 
 $seasons = SeasonCollection::findByShowId($showId);
 

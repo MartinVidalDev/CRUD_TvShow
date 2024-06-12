@@ -30,28 +30,35 @@ try {
 
     // Adding a button to either delete the Show or cancel the creation
     if (isset($_GET['showId'])) {
-        $webPage->appendContent(<<<HTML
+        $webPage->appendContent(
+            <<<HTML
 
     <form class="cancel-form" action="tvshow.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la modification de série ?');">
         <input type="hidden" name="showId" value="{$showId}" />
-        <button type="submit">Annuler</button>
+        <div class="form__group">
+            <button type="submit">Annuler</button>
+        </div>
     </form>
 
     <form class="delete-form" action="tvshow-delete.php" method="get" onsubmit="return confirm('Voulez-vous vraiment supprimer cette série ?');">
         <input type="hidden" name="showId" value="{$showId}" />
-        <button class="delete" type="submit">Supprimer</button>
+        <div class="form__group">
+            <button class="delete" type="submit">Supprimer</button>
+        </div>
     </form>
 
-HTML
+    HTML
         );
-    }
-    else {
-        $webPage->appendContent(<<<HTML
+    } else {
+        $webPage->appendContent(
+            <<<HTML
 
-    <form class="cancel-form" action="../../index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
-        <button class="cancel" type="submit">Annuler</button>
-    </form>
-HTML
+        <form class="cancel-form" action="../../index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
+            <div class="form__group">
+                <button class="cancel" type="submit">Annuler</button>
+            </div>
+        </form>
+        HTML
         );
     }
 
