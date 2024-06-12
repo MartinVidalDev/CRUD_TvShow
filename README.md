@@ -245,4 +245,4 @@ a plus qu'à cliquer sur le lien et cela redirige l'utilisateur sur la page de l
 
 À noter : Cette fonction de recherche s'applique aussi quand les séries sont filtrées par genre.
 
-![Example utilisation de la search-bar](captures/search-bar.png)
+![Exemple utilisation de la search-bar](captures/search-bar.png)
