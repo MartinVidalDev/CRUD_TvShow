@@ -41,6 +41,7 @@ class TVShowForm
 
 
         $form = <<<HTML
+<h1>Ajouter une Série</h1>
 <div class="form">
     <form method="post" action="{$action}">
         <input type="hidden" name="id" value="{$tvShow?->getId()}" />
@@ -58,7 +59,7 @@ class TVShowForm
         </div>
         <div class="form__group">
             <label for="overview">Description</label>
-            <input id="overview" type="text" name="overview" value="{$tvShowOverview}" required autocomplete="off" />
+            <textarea id="overview" name="overview" required autocomplete="off" placeholder="Entrez la description de la série..." rows="5">{$tvShowOverview}</textarea>
         </div>
         <button type="submit" value="submit">Save</button>
     </form>
