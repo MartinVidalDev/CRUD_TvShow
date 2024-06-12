@@ -164,7 +164,7 @@ class WebPage
      *
      * @return string HTML code of the web page.
      */
-    public function toHTML(): string
+    public function toHTML(string $loupe): string
     {
         return <<<HTML
         <!DOCTYPE html>

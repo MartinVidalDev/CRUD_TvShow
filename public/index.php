@@ -14,7 +14,7 @@ $genres = Genre::findAll();
 $webPage->appendContent(<<<HTML
 <form method="get">
     <select name="genreId" onchange="this.form.submit()">
-        <option value="">Tous</option>
+        <option value="">Tous genres confondus</option>
 HTML);
 
 $currentGenreId = $_GET['genreId'] ?? '';
@@ -40,6 +40,14 @@ if (isset($_GET['genreId']) && is_numeric($_GET['genreId'])) {
     $shows = TVShowCollection::findAll();
 }
 
+// Extraire les noms des shows
+$showNames = array_map(function ($show) {
+    return ['name' => $show->getName(), 'id' => $show->getId()];
+}, $shows);
+
+// Encoder le tableau de noms en JSON
+$showNamesJson = json_encode($showNames);
+
 // Shows
 foreach ($shows as $show) {
     $webPage->appendContent(
@@ -58,4 +66,4 @@ foreach ($shows as $show) {
     );
 }
 
-echo $webPage->toHTML();
+echo $webPage->toHTML($showNamesJson);
