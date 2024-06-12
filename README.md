@@ -225,4 +225,3 @@ modifier par erreur des informations.
 
 ![Ajout d'une série](captures/ajout-serie.png)
 ![Nouvelle série ajoutée](captures/page-accueil-ajout.png)
-
