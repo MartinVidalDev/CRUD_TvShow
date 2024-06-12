@@ -33,7 +33,7 @@ try {
         $webPage->appendContent(
             <<<HTML
 
-    <form class="cancel-form" action="tvshow.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la modification de série ?');">
+    <form class="cancel-form" action="/tvshow.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la modification de série ?');">
         <input type="hidden" name="showId" value="{$showId}" />
         <div class="form__group">
             <button type="submit">Annuler</button>
@@ -53,7 +53,7 @@ try {
         $webPage->appendContent(
             <<<HTML
 
-        <form class="cancel-form" action="../../index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
+        <form class="cancel-form" action="/index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
             <div class="form__group">
                 <button class="cancel" type="submit">Annuler</button>
             </div>
