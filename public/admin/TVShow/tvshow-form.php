@@ -24,7 +24,8 @@ try {
     }
 
     // Build an instance of TVShowForm
-    $webPage = new \Html\AppWebPage("Insert");
+    $webPage = new \Html\AppWebPage("Modifier");
+    $webPage->appendCSSUrl("/css/style-form.css");
     $form = new TVShowForm($tvShow);
     $webPage->appendContent($form->getHtmlForm('tvshow-save.php'));
 
@@ -52,12 +53,13 @@ try {
     } else {
         $webPage->appendContent(
             <<<HTML
-
-        <form class="cancel-form" action="/index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
-            <div class="form__group">
-                <button class="cancel" type="submit">Annuler</button>
-            </div>
-        </form>
+        <div class="form"
+            <form class="cancel-form" action="../../index.php" method="get" onsubmit="return confirm('Voulez-vous vraiment annuler la création de série ?');">
+                <div class="form__group">
+                    <button class="cancel" type="submit">Annuler</button>
+                </div>
+            </form>
+        </div>
         HTML
         );
     }
