@@ -35,7 +35,6 @@ if (isset($_GET['genreId']) && is_numeric($_GET['genreId'])) {
     // Display shows by genre
     $genreId = (int)$_GET['genreId'];
     $shows = TVShowCollection::findByGenre($genreId);
-    $webPage->setTitle($genre->getName());
 } else {
     // Display all shows
     $shows = TVShowCollection::findAll();
