@@ -16,6 +16,12 @@
     * [Serveur local](#serveur-local)
     * [Style de codage](#style-de-codage)
   * [Structure du projet](#structure-du-projet)
+  * [Utilisation de l'application](#utilisation-de-lapplication)
+    * [Page d'accueil](#page-daccueil-)
+    * [Page de série](#page-de-série)
+    * [Page de saison](#page-de-saison)
+    * [Page d'édition d'une série](#page-dédition-dune-série)
+    * [Page d'ajout d'une série](#page-dajout-dune-série)
 <!-- TOC -->
 
 ## Introduction
@@ -167,4 +173,56 @@ pages web sur lesquelles l'utilisateur va naviguer. Il y a dans ce répertoire d
   (```css``` pour le style, ```js``` pour le javascript, ```image``` pour les images, ```admin``` pour les formulaires…)
 - ```bin``` contient les scripts de lancement du serveur
 - ```composer.json``` contient la configuration de composer
+
+## Utilisation de l'application
+
+### Page d'accueil 
+
+![Page d'accueil](captures/page-accueil.png)
+
+La page d'accueil se présente ainsi. L'illustration est une fois sur deux à droite, l'autre fois à gauche conformément à
+la maquette donnée. En haut, un menu déroulant nous permet de filtrer cet affichage par genre.
+
+![Filtrage par genre](captures/page-accueil-sf.png)
+
+Sur la barre de navigation supérieure, on peut accéder à cette page d'accueil depuis n'importe où grâce à la section "Home"
+et au bouton en haut à gauche. On peut également, depuis la page d'accueil, [ajouter une série](#page-dajout-dune-série),
+changer entre les modes d'éclairages clair et sombre grâce à un bouton qui agit comme un *toggle* et faire une recherche.
+
+Sur la version mobile, les sections du menu de navigation sont cachées derrière un menu *burger* animé.
+
+![Menu du site sur mobile](captures/page-accueil-mobile.png)
+
+Depuis cette page d'accueil, on peut cliquer sur une série pour accéder à sa page.
+
+### Page de série
+
+![La page de la série Breaking Bad](captures/page-serie.png)
+
+La page de série présente en haut la série avec son titre, son titre en version originale, et son synopsis. Cette section
+redirige vers la page web (externe) de la série si on clique dessus.
+En dessous, on a les différentes saisons sur lesquelles on peut cliquer pour accéder à la liste des épisodes.
+
+Sur la barre de navigation, on a une option pour [modifier la série](#page-dédition-dune-série), selon un formulaire similaire à celui de création
+de série.
+
+### Page de saison
+
+![Page de la saison 4 de Breaking Bad](captures/page-saison.png)
+
+Cette page présente la liste des épisodes d'une saison
+
+### Page d'édition d'une série
+
+![Édition d'une série](captures/edit-serie.png)
+
+La page d'édition d'une série permet de modifier son titre, son titre original, sa page d'accueil et sa description.
+Il y a un bouton de sauvegarde pour enregistrer les changements, un bouton d'annulation et un bouton de suppression de la série.
+Ces boutons lancent un pop-up qui demande à l'utilisateur de confirmer avant d'exécuter l'action pour éviter de supprimer ou de
+modifier par erreur des informations.
+
+### Page d'ajout d'une série
+
+![Ajout d'une série](captures/ajout-serie.png)
+![Nouvelle série ajoutée](captures/page-accueil-ajout.png)
 
