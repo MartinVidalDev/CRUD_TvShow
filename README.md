@@ -11,11 +11,11 @@
   * [Auteurs](#auteurs)
   * [Sommaire](#sommaire)
   * [Introduction](#introduction)
-* [Mise en place du projet](#mise-en-place-du-projet)
-  * [Installation et Configuration](#installation-et-configuration)
-  * [Serveur local](#serveur-local)
-  * [Style de codage](#style-de-codage)
-* [Structure du projet](#structure-du-projet)
+  * [Mise en place du projet](#mise-en-place-du-projet)
+    * [Installation et Configuration](#installation-et-configuration)
+    * [Serveur local](#serveur-local)
+    * [Style de codage](#style-de-codage)
+  * [Structure du projet](#structure-du-projet)
 <!-- TOC -->
 
 ## Introduction
@@ -97,3 +97,74 @@ en cas de mauvaise syntaxe.
 ![php-cs-fixer dans PhpStorm](captures/cs-fixer-in-phpstorm.png)
 
 ## Structure du projet
+
+Voici à quoi ressemble l'arborescence du projet.
+
+```angular2html
+|── .gitignore
+├── .php-cs-fixer.php
+├── README.md
+├── bin
+│   ├── run-server.bat
+│   └── run-server.sh
+├── captures
+│   ├── ...
+├── composer.json
+├── composer.lock
+├── public
+│   ├── admin
+│   │   ├── Season
+│   │   │   ├── ...
+│   │   └── TVShow
+│   │       ├── tvshow-delete.php
+│   │       ├── tvshow-form.php
+│   │       └── tvshow-save.php
+│   ├── css
+│   │   └── style.css
+│   ├── genre.php
+│   ├── image
+│   │   ├── default-poster.png
+│   │   └── icon-site.png
+│   ├── index.php
+│   ├── js
+│   │   └── nav-animation.js
+│   ├── poster.php
+│   ├── season.php
+│   └── tvshow.php
+└── src
+    ├── Database
+    │   └── MyPdo.php
+    ├── Entity
+    │   ├── Collection
+    │   │   ├── EpisodeCollection.php
+    │   │   ├── SeasonCollection.php
+    │   │   └── TVShowCollection.php
+    │   ├── Episode.php
+    │   ├── Exception
+    │   │   ├── EntityNotFoundException.php
+    │   │   └── ParameterException.php
+    │   ├── Genre.php
+    │   ├── Poster.php
+    │   ├── Season.php
+    │   └── TVShow.php
+    └── Html
+        ├── AppWebPage.php
+        ├── Form
+        │   ├── EpisodeForm.php
+        │   ├── SeasonForm.php
+        │   └── TVShowForm.php
+        ├── StringEscaper.php
+        └── WebPage.php
+```
+
+Les éléments principaux sont :
+
+- ```src/``` : contient toutes les classes nécessaires au bon fonctionnement du projet. Divisé en ```src/Database``` pour 
+les classes relatives à la base de données, ```src/Entity``` pour, entre autres, les classes qui permettent d'interagir avec
+les tables et ```src/Html``` pour les classes permettant de générer des pages web HTML.
+- ```public``` contient tout le contenu visible par l'utilisateur sur le site. Les différents fichiers php correspondent aux
+pages web sur lesquelles l'utilisateur va naviguer. Il y a dans ce répertoire des dossiers pour séparer les différents éléments
+  (```css``` pour le style, ```js``` pour le javascript, ```image``` pour les images, ```admin``` pour les formulaires…)
+- ```bin``` contient les scripts de lancement du serveur
+- ```composer.json``` contient la configuration de composer
+
