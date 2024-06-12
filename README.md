@@ -80,7 +80,7 @@ Il est déjà installé, mais si besoin, on l'installe grâce à la commande sui
 ```bash
 composer require friendsofphp/php-cs-fixer --dev
 ```
-ou
+On peut le lancer avec la commande suivante
 ```bash
 composer fix:cs
 ```
