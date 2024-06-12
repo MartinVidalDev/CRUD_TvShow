@@ -409,9 +409,13 @@ h3 {
 }
 
 .footer {
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     padding: 5px;
+    background-color: var(--side-nav);
+    text-align: center;
 }
 
 .tvshow__title {
