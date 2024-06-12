@@ -22,6 +22,9 @@
     * [Page de saison](#page-de-saison)
     * [Page d'édition d'une série](#page-dédition-dune-série)
     * [Page d'ajout d'une série](#page-dajout-dune-série)
+  * [Fonctionnalités avancées](#fonctionnalités-avancées)
+    * [Dark-Mode](#dark-mode)
+    * [Search-Bar](#search-bar)
 <!-- TOC -->
 
 ## Introduction
@@ -225,3 +228,21 @@ modifier par erreur des informations.
 
 ![Ajout d'une série](captures/ajout-serie.png)
 ![Nouvelle série ajoutée](captures/page-accueil-ajout.png)
+
+### Fonctionnalités avancées
+
+#### Dark-Mode
+Possibilité d'activer un dark-mode en appuyant sur le soleil (passer en noir) et l'inverse, en appuyant sur la lune (passer en blanc).
+
+![Le dark-mode est désactivé](captures/dark-mode-light.png)
+
+![Le dark-mode est activé](captures/dark-mode-dark.png)
+
+
+#### Search-bar
+Possibilité de rechercher une série en appuyant sur la loupe et en rentrant la série recherchée au clavier. Ensuite il n'y
+a plus qu'à cliquer sur le lien et cela redirige l'utilisateur sur la page de la série.
+
+À noter : Cette fonction de recherche s'applique aussi quand les séries sont filtrées par genre.
+
+![Example utilisation de la search-bar](captures/search-bar.png)
