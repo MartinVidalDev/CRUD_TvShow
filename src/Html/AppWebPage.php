@@ -147,7 +147,7 @@ HTML;
      * @return string The HTML of the web page.
      * @throws \Exception
      */
-    public function toHTML(): string
+    public function toHTML(string $loupe = ""): string
     {
         $html = <<<HTML
 <!DOCTYPE html>
@@ -211,6 +211,7 @@ HTML;
                     </div>
                 </div>
             </nav>
+            <pre id="artist-data" style="display:none;">$loupe</pre>
         </header>
         <main class="content">
             {$this->getMenu()}
@@ -218,6 +219,7 @@ HTML;
         </main>
         <footer class="footer">{$this->getLastModification()}</footer>
         <script src="/js/nav-animation.js"></script>
+        <script src="/js/search-bar.js"></script>
     </body>
 </html>
 HTML;
