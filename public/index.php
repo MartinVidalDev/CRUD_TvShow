@@ -14,7 +14,7 @@ $genres = Genre::findAll();
 $webPage->appendContent(<<<HTML
 <form method="get">
     <select name="genreId" onchange="this.form.submit()">
-        <option value="">Tous</option>
+        <option value="">Tous genres confondus</option>
 HTML);
 
 $currentGenreId = $_GET['genreId'] ?? '';
